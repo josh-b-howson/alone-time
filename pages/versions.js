@@ -1,39 +1,42 @@
-import Versions from "../configs/utils/Versions";
 import { getVersions } from "../utils/bibleConnector";
 
-const TestPage = (props) => {
-  console.log(props);
-  // Render data...
+const Versions = (props) => {
 
   const VersionCard = (props) => {
     const version = props.version;
     return (
       <li className="version-card">
-        <h4>Name: {version.name}</h4>
-        <div>Id: {version.id}</div>
-        <div>Abbreviation: {version.abbreviation}</div>
-        <div>Language: {version.language.name}</div>
-        <div>Description: {version.description}</div>
+        <h3>{version.name}</h3>
+        <div><span className="label">Id:</span>{version.id}</div>
+        <div><span className="label">Abbreviation:</span>{version.abbreviation}</div>
+        <div><span className="label">Language:</span>{version.language.name}</div>
+        <div><span className="label">Description:</span>{version.description}</div>
         <style jsx>{`
           .version-card {
             background-color: #f6f6f6;
             border: 1px solid #ccc;
             padding: 1rem;
             border-radius: 6px;
-            flex-basis: 219px;
             flex-grow: 1;
             flex-shrink: 0;
           }
-          .version-card h4 {
+          .version-card h3 {
             margin: 0 0 .5rem 0;
           }
+          .version-card .label {
+            text-transform: uppercase;
+            color: #777;
+            font-weight: 700;
+            font-size: 13px;
+          }
+          .version-card .label::after {content: ' '}
         `}</style>
       </li>
     )
   }
   return (
     <section className="versions">
-      <h1>Hello World</h1>
+      <h1>Bible Versions</h1>
       <ul className="version-list">
         {props?.versionsResponse.map(version =>
           <VersionCard version={version} />
@@ -45,6 +48,7 @@ const TestPage = (props) => {
         }
         .version-list {
           display: flex;
+          flex-direction:column;
           list-style: none;
           flex-wrap: wrap;
           gap: 10px;
@@ -67,4 +71,4 @@ export const getServerSideProps = async () => {
   return { props: { versionsResponse: versionsResponse } }
 }
 
-export default TestPage;
+export default Versions;
