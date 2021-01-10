@@ -1,4 +1,6 @@
-import { getVersions } from "../utils/bibleConnector";
+import { toast } from "react-toastify"
+import { getVersions } from "../utils/bibleConnector"
+import { Layout } from '../components/layout-components'
 
 const Versions = (props) => {
 
@@ -35,11 +37,12 @@ const Versions = (props) => {
     )
   }
   return (
-    <section className="versions">
+    <Layout>
+
       <h1>Bible Versions</h1>
       <ul className="version-list">
         {props?.versionsResponse.map(version =>
-          <VersionCard version={version} />
+          <VersionCard key={version.id} version={version} />
         )}
       </ul>
       <style jsx>{`
@@ -56,7 +59,7 @@ const Versions = (props) => {
           padding: 0;
         }
       `}</style>
-    </section>
+    </Layout>
   )
 }
 
@@ -64,8 +67,6 @@ const Versions = (props) => {
 export const getServerSideProps = async () => {
   // Fetch data from external API
   const versionsResponse = await getVersions();
-  // const versions = new Versions(versionsResponse);
-  // setTimeout(() => console.log(versions), 4000);
 
   // Pass data to the page via props
   return { props: { versionsResponse: versionsResponse } }
