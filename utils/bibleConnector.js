@@ -2,6 +2,7 @@ import { getBibleApiKey } from "../utils/utils";
 import { XMLHttpRequest } from 'xhr2';
 
 const API_KEY = getBibleApiKey();
+const placeholderVersionId = '6bab4d6c61b31b80-01';
 
 const callBibleAPI = (method, url, data) => {
   const promise = new Promise((resolve, reject) => {
@@ -57,7 +58,16 @@ export function getAllBooks(id) {
 /**
  * Get chapters in a book
  */
+export function getBookById(bookId) {
+  const bibleId = placeholderVersionId;
+  return callBibleAPI(`GET`, `https://api.scripture.api.bible/v1/bibles/${bibleId}/books/${bookId}`);
+}
+
+/**
+ * Get chapters in a book
+ */
 export function getAllChapters(bookId) {
-  const bibleId = '6bab4d6c61b31b80-01'
+  const bibleId = placeholderVersionId;
   return callBibleAPI(`GET`, `https://api.scripture.api.bible/v1/bibles/${bibleId}/books/${bookId}/chapters`);
 }
+

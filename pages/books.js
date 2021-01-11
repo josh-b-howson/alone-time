@@ -4,7 +4,6 @@ import { getAllBooks } from '../utils/bibleConnector';
 
 const Books = (props) => {
   const books = props.books;
-  console.log(books);
   return (
     <Layout>
       <h1>Books List</h1>
