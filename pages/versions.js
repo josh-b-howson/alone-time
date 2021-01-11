@@ -1,8 +1,6 @@
-import { toast } from "react-toastify"
-import { getAllVersions, getVersionById } from "../utils/bibleConnector"
-import { Layout } from '../components/layout-components'
-import { useDispatch, useSelector } from 'react-redux'
-import { useState } from "react"
+import { getAllVersions } from "../utils/bibleConnector";
+import { Layout } from '../components/layout-components';
+import Link from 'next/link';
 
 const Versions = (props) => {
 
@@ -11,7 +9,7 @@ const Versions = (props) => {
       <h1>Bible Versions</h1>
       <ul>
         {props?.versionsResponse.map(version =>
-          <li>{version.name}</li>
+          <li>{version.name} <Link href={`/version/${version.id}`}><a>View</a></Link></li>
         )}
       </ul>
     </Layout>

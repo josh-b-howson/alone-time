@@ -3,8 +3,6 @@ import { Layout } from "../components/layout-components";
 
 const AnotherPage = () => {
   const currentVersion = useSelector(state => state.version);
-  console.log("now we're on a new page")
-  console.log(currentVersion)
   return (
     <Layout>
       <h1>Welcome to another page!</h1>

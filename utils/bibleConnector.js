@@ -53,12 +53,3 @@ export function getVersionById(id) {
 export function getAllBooks(id) {
   return callBibleAPI(`GET`, `https://api.scripture.api.bible/v1/bibles/${id}/books`);
 }
-
-/**
- * Get chapters list
- */
-
-
-/**
- * Get passage
- */
