@@ -1,15 +1,16 @@
+import Link from 'next/link';
 import { Layout } from '../components/layout-components';
 import { getAllBooks } from '../utils/bibleConnector';
 
 const Books = (props) => {
   const books = props.books;
-
+  console.log(books);
   return (
     <Layout>
       <h1>Books List</h1>
       <ul>
         {books.map((book, index) => {
-          return <li>{book.name}</li>
+          return <li>{book.name} <Link href={`/book/${book.id}`}><a>View</a></Link></li>
         })}
       </ul>
     </Layout>

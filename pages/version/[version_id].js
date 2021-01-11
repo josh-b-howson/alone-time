@@ -18,7 +18,8 @@ const GetOneVersion = (props) => {
 }
 
 export async function getServerSideProps(ctx) {
-  const version = await getVersionById(ctx.query.version_id).then(res => res.data).catch(res => console.err(`getVersionsById() failed`));
+  const versionId = ctx.query.version_id;
+  const version = await getVersionById(versionId).then(res => res.data).catch(res => console.error(`getVersionsById() failed`));
 
   return { props: { version } };
 }
