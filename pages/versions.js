@@ -20,12 +20,7 @@ const Versions = (props) => {
 export const getServerSideProps = async () => {
   const res = await getAllVersions().then(res => res.data);
 
-  return {
-    props:
-    {
-      versionsResponse: res
-    }
-  }
+  return { props: { versionsResponse: res } }
 }
 
 export default Versions;

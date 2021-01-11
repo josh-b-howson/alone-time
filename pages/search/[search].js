@@ -4,7 +4,7 @@ import { getResults } from "../../utils/bibleConnector";
 
 const SearchResult = (props) => {
   const result = props.result;
-  const verses = result.verses;
+  const verses = result?.verses;
   return (
     <Layout {...props}>
       <h1>Search Results</h1>

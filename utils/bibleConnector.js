@@ -51,8 +51,9 @@ export function getVersionById(id) {
 /**
  * Get books list
  */
-export function getAllBooks(id) {
-  return callBibleAPI(`GET`, `https://api.scripture.api.bible/v1/bibles/${id}/books`);
+export function getAllBooks() {
+  const bibleId = placeholderVersionId;
+  return callBibleAPI(`GET`, `https://api.scripture.api.bible/v1/bibles/${bibleId}/books`);
 }
 
 /**
@@ -77,6 +78,6 @@ export function getAllChapters(bookId) {
 export function getResults(searchText) {
   const bibleId = placeholderVersionId;
   return callBibleAPI(`GET`, `https://api.scripture.api.bible/v1/bibles/${bibleId}/search?query=${searchText}}`);
-  
+
 }
 
