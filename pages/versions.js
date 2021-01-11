@@ -1,75 +1,33 @@
 import { toast } from "react-toastify"
-import { getVersions } from "../utils/bibleConnector"
+import { getAllVersions, getVersionById } from "../utils/bibleConnector"
 import { Layout } from '../components/layout-components'
+import { useDispatch, useSelector } from 'react-redux'
+import { useState } from "react"
 
 const Versions = (props) => {
 
-  const VersionCard = (props) => {
-    const version = props.version;
-    return (
-      <li className="version-card">
-        <h3>{version.name}</h3>
-        <div><span className="label">Id:</span>{version.id}</div>
-        <div><span className="label">Abbreviation:</span>{version.abbreviation}</div>
-        <div><span className="label">Language:</span>{version.language.name}</div>
-        <div><span className="label">Description:</span>{version.description}</div>
-        <style jsx>{`
-          .version-card {
-            background-color: #f6f6f6;
-            border: 1px solid #ccc;
-            padding: 1rem;
-            border-radius: 6px;
-            flex-grow: 1;
-            flex-shrink: 0;
-          }
-          .version-card h3 {
-            margin: 0 0 .5rem 0;
-          }
-          .version-card .label {
-            text-transform: uppercase;
-            color: #777;
-            font-weight: 700;
-            font-size: 13px;
-          }
-          .version-card .label::after {content: ' '}
-        `}</style>
-      </li>
-    )
-  }
   return (
     <Layout>
-
       <h1>Bible Versions</h1>
-      <ul className="version-list">
+      <ul>
         {props?.versionsResponse.map(version =>
-          <VersionCard key={version.id} version={version} />
+          <li>{version.name}</li>
         )}
       </ul>
-      <style jsx>{`
-        .versions {
-          margin: 1rem;
-        }
-        .version-list {
-          display: flex;
-          flex-direction:column;
-          list-style: none;
-          flex-wrap: wrap;
-          gap: 10px;
-          margin: 0;
-          padding: 0;
-        }
-      `}</style>
     </Layout>
   )
 }
 
 // This gets called on every request
 export const getServerSideProps = async () => {
-  // Fetch data from external API
-  const versionsResponse = await getVersions();
+  const res = await getAllVersions().then(res => res.data);
 
-  // Pass data to the page via props
-  return { props: { versionsResponse: versionsResponse } }
+  return {
+    props:
+    {
+      versionsResponse: res
+    }
+  }
 }
 
 export default Versions;

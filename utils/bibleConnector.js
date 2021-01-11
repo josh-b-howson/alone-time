@@ -2,76 +2,63 @@ import { getBibleApiKey } from "../utils/utils";
 import { XMLHttpRequest } from 'xhr2';
 
 const API_KEY = getBibleApiKey();
+
+const callBibleAPI = (method, url, data) => {
+  const promise = new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+    xhr.withCredentials = false;
+    xhr.open(method, url);
+
+    xhr.responseType = 'json';
+    xhr.setRequestHeader(`api-key`, API_KEY);
+
+    if (data) {
+      xhr.setRequestHeader(`Content-Type`, `application/json`);
+    }
+
+    xhr.onload = () => {
+      if (xhr.status >= 400) {
+        reject(xhr.response);
+      } else {
+        resolve(xhr.response);
+      }
+    };
+
+    xhr.onerror = () => {
+      reject("Something went wrong.");
+    };
+
+    xhr.send(JSON.stringify(data));
+  });
+  return promise;
+};
+
 /**
- * Get passage
+ * Get versions 
  */
+export function getAllVersions() {
+  return callBibleAPI(`GET`, `https://api.scripture.api.bible/v1/bibles`);
+}
+
+/**
+ * Get version by ID
+ */
+export function getVersionById(id) {
+  return callBibleAPI(`GET`, `https://api.scripture.api.bible/v1/bibles/${id}`);
+}
 
 /**
  * Get books list
  */
-export function getBooks(bibleVersionID) {
-  return new Promise((resolve, reject) => {
-    const xhr = new XMLHttpRequest();
-    xhr.withCredentials = false;
-
-    xhr.addEventListener(`readystatechange`, function () {
-      if (this.readyState === this.DONE) {
-        const { data } = JSON.parse(this.responseText);
-        const books = data.map(({ name, id }) => {
-          return { name, id };
-        });
-
-        resolve(books);
-      }
-    });
-
-    xhr.open(
-      `GET`,
-      `https://api.scripture.api.bible/v1/bibles/${bibleVersionID}/books`,
-    );
-
-    xhr.setRequestHeader(`api-key`, API_KEY);
-
-    xhr.onerror = () => reject(xhr.statusText);
-
-    xhr.send();
-  });
+export function getAllBooks(id) {
+  return callBibleAPI(`GET`, `https://api.scripture.api.bible/v1/bibles/${id}/books`);
 }
 
 /**
  * Get chapters list
  */
 
+
 /**
- * Get versions 
+ * Get passage
  */
-export function getVersions() {
-  return new Promise((resolve, reject) => {
-    const xhr = new XMLHttpRequest();
-    xhr.withCredentials = false;
-
-    xhr.addEventListener(`readystatechange`, function () {
-      if (this.readyState === this.DONE) {
-        const { data } = JSON.parse(this.responseText);
-        const versions = data.map((data) => {
-          return {
-            name: data.name,
-            id: data.id,
-            abbreviation: data.abbreviation,
-            description: data.description,
-            language: data.language,
-          };
-        });
-
-        resolve(versions);
-      }
-    });
-    
-    xhr.open(`GET`, `https://api.scripture.api.bible/v1/bibles`);
-    xhr.setRequestHeader(`api-key`, API_KEY);
-
-    xhr.onerror = () => reject(xhr.statusText);
-
-    xhr.send();
-  });
-}
