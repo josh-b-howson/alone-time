@@ -2,7 +2,7 @@ import { getBibleApiKey } from "../utils/utils";
 import { XMLHttpRequest } from 'xhr2';
 
 const API_KEY = getBibleApiKey();
-const placeholderVersionId = '6bab4d6c61b31b80-01';
+const placeholderVersionId = '06125adad2d5898a-01';
 
 const callBibleAPI = (method, url, data) => {
   const promise = new Promise((resolve, reject) => {
@@ -58,9 +58,9 @@ export function getAllBooks(id) {
 /**
  * Get chapters in a book
  */
-export function getBookById(bookId) {
+export function getBookById(bookId, fetchChapterSummaries) {
   const bibleId = placeholderVersionId;
-  return callBibleAPI(`GET`, `https://api.scripture.api.bible/v1/bibles/${bibleId}/books/${bookId}`);
+  return callBibleAPI(`GET`, `https://api.scripture.api.bible/v1/bibles/${bibleId}/books/${bookId}?include-chapters=${fetchChapterSummaries}`);
 }
 
 /**
@@ -69,5 +69,14 @@ export function getBookById(bookId) {
 export function getAllChapters(bookId) {
   const bibleId = placeholderVersionId;
   return callBibleAPI(`GET`, `https://api.scripture.api.bible/v1/bibles/${bibleId}/books/${bookId}/chapters`);
+}
+
+/**
+ * Search for passages
+ */
+export function getResults(searchText) {
+  const bibleId = placeholderVersionId;
+  return callBibleAPI(`GET`, `https://api.scripture.api.bible/v1/bibles/${bibleId}/search?query=${searchText}}`);
+  
 }
 

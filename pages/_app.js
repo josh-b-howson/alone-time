@@ -3,8 +3,9 @@ import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 import rootReducer from '../store/reducers'
 import { composeWithDevTools } from 'redux-devtools-extension'
+import { getAllVersions } from '../utils/bibleConnector'
 
-const AloneTimeApp = ({ Component, pageProps }) => {
+const AloneTimeApp = ({ Component, pageProps, appProps }) => {
 
   const initialState = {}
 
@@ -13,9 +14,14 @@ const AloneTimeApp = ({ Component, pageProps }) => {
 
   return (
     <Provider store={store}>
-      <Component {...pageProps} />
+      <Component {...appProps} {...pageProps} />
     </Provider>
   )
+}
+
+export async function getServerSideProps(ctx) {
+  const versions = await getAllVersions().then(res => res.data).catch(`getAllVersions() failed`);
+  return {appProps: {versions}}
 }
 
 export default AloneTimeApp;

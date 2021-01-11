@@ -9,7 +9,7 @@ const Versions = (props) => {
       <h1>Bible Versions</h1>
       <ul>
         {props?.versionsResponse.map(version =>
-          <li>{version.name} <Link href={`/version/${version.id}`}><a>View</a></Link></li>
+          <li key={version.id}>{version.name} <Link href={`/version/${version.id}`}><a>View</a></Link></li>
         )}
       </ul>
     </Layout>

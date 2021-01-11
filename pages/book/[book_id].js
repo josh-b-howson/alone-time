@@ -9,7 +9,7 @@ const Book = (props) => {
     <Layout>
       <h1>{book.name}</h1>
       <ul>
-        {chapters.map(chapter => {
+        {book?.chapters.map(chapter => {
           return <li><Link href={"/"}><a>{chapter.number}</a></Link></li>
         })}
       </ul>
@@ -20,10 +20,8 @@ const Book = (props) => {
 export async function getServerSideProps(ctx) {
   const bookId = ctx.query.book_id;
 
-  const book = await getBookById(bookId).then(res => res.data).catch(res => console.error(`getBookById() failed`));
-
-  const chapters = await getAllChapters(bookId).then(res => res.data).catch(res => console.error(`getAllChapters() failed`));
-  return { props: { chapters, bookId, book } };
+  const book = await getBookById(bookId, true).then(res => res.data).catch(res => console.error(`getBookById() failed`));
+  return { props: { book } };
 }
 
 export default Book;

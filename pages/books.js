@@ -9,7 +9,7 @@ const Books = (props) => {
       <h1>Books List</h1>
       <ul>
         {books.map((book, index) => {
-          return <li>{book.name} <Link href={`/book/${book.id}`}><a>View</a></Link></li>
+          return <li key={book.id}>{book.name} <Link href={`/book/${book.id}`}><a>View</a></Link></li>
         })}
       </ul>
     </Layout>
