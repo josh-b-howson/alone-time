@@ -1,17 +1,15 @@
 import { ToastContainer } from 'react-toastify';
 import Link from 'next/link';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { setVersion } from '../../store/actions/version';
 import { useState } from 'react';
 
 const Layout = (props) => {
-  console.log(props);
   const LanguageSelect = (props) => {
     const dispatch = useDispatch();
     const versions = props.versions;
 
     const handleChange = (e) => {
-      console.log();
       dispatch(setVersion(e.target.value))
     }
 
@@ -32,9 +30,6 @@ const Layout = (props) => {
       </header>
       <ToastContainer />
       {props.children}
-      <style jsx>{`
-        
-      `}</style>
     </div>
   )
 }

@@ -6,7 +6,7 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 import { getAllVersions } from '../utils/bibleConnector'
 import App from 'next/app';
 
-const AloneTimeApp = (props) => {
+const AloneTimeApp = ({ Component, pageProps, versions }) => {
   const initialState = {}
 
   const composedEnhancers = composeWithDevTools()
@@ -14,13 +14,15 @@ const AloneTimeApp = (props) => {
 
   return (
     <Provider store={store}>
-      <props.Component {...props}/>
+      <Component {...pageProps} versions={versions} />
     </Provider>
   )
 }
 
-AloneTimeApp.getInitialProps = async ctx => {
+AloneTimeApp.getInitialProps = async (appContext) => {
   const versions = await getAllVersions().then(res => res.data).catch(`getAllVersions() failed`);
+  // calls page's `getInitialProps` and fills `appProps.pageProps`
+  // const appProps = await App.getInitialProps(appContext);
   return { versions }
 }
 
