@@ -37,7 +37,7 @@ export function getAllVersions(options) {
  * Get version by ID
  */
 export function getVersionById(id, options) {
-  return fetchFromApi(`https://api.scripture.api.bible/v1/bibles/${id}`);
+  return fetchFromApi(`https://api.scripture.api.bible/v1/bibles/${id}`, options);
 }
 
 /**

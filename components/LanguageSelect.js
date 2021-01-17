@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setVersion } from '../store/actions/version';
 import { getAllVersions } from '../utils/bibleConnector';
+import { limitCharacters } from '../utils/utils';
 
 const LanguageSelect = (props) => {
   const [versionList, setVersionList] = useState(null);
@@ -13,16 +14,13 @@ const LanguageSelect = (props) => {
       .then(json => json.data)
       .catch(res => console.error(`getAllVersions() failed. ${res}`))
 
-
-
     if (versions.length > 0)
       setVersionList(versions)
     else
-      console.error("Version List wasn't able to be set. Nothing returned from fetch.")
+      console.error("versionList wasn't able to be set. Nothing returned from fetch.")
   }
 
   const handleClick = (window) => {
-
     // only need to get versions if it hasn't yet been fetched
     if (!versionList)
       getVersions(window)
@@ -33,10 +31,18 @@ const LanguageSelect = (props) => {
     dispatch(setVersion(e.target.value))
   }
 
-  return <select onChange={handleChange} onClick={e => handleClick(window)}>
-    <option value="none">Choose a version</option>
-    {versionList && versionList.map(version => <option key={version.id} value={version.id}>{version.name}</option>)}
-  </select>
+  return <div>
+    <select onChange={handleChange} onClick={e => handleClick(window)}>
+      <option value="none">Choose a version</option>
+      {versionList && versionList.map(version =>
+        <option
+          key={version.id}
+          value={version.id}>
+          {limitCharacters(version.name, { limit: 40, ellipsis: true })}
+        </option>
+      )}
+    </select>
+  </div>
 }
 
 export default LanguageSelect;
