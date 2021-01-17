@@ -23,7 +23,10 @@ const SearchResult = (props) => {
 export async function getServerSideProps(ctx) {
   const searchQuery = ctx.query.search;
 
-  const result = await getResults(searchQuery).then(res => res.data).catch(console.error(`getResults() failed`));
+  const result = await getResults(searchQuery)
+  .then(res => res.json())
+  .then(json => json.data)
+  .catch(res => console.error(`An error ocurred in getResults(). ${res.error}`));
   return { props: { result } };
 }
 

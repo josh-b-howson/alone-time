@@ -4,11 +4,13 @@ import Link from 'next/link';
 
 const Versions = (props) => {
 
+  const versions = props.versions;
+
   return (
-    <Layout>
+    <Layout {...props}>
       <h1>Bible Versions</h1>
       <ul>
-        {props?.versionsResponse.map(version =>
+        {versions && versions.map(version =>
           <li key={version.id}>{version.name} <Link href={`/version/${version.id}`}><a>View</a></Link></li>
         )}
       </ul>
@@ -16,11 +18,13 @@ const Versions = (props) => {
   )
 }
 
-// This gets called on every request
-export const getServerSideProps = async () => {
-  const res = await getAllVersions().then(res => res.data);
+export const getServerSideProps = async (ctx) => {
+  const versionsList = await getAllVersions()
+    .then(res => res.json())
+    .then(json => json.data)
+    .catch(res => console.error(`An error ocurred in getAllVersions(). ${res.error}`))
 
-  return { props: { versionsResponse: res } }
+  return { props: { versions: versionsList } }
 }
 
 export default Versions;

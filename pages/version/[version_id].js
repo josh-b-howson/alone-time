@@ -5,7 +5,7 @@ const GetOneVersion = (props) => {
 
   const version = props.version;
 
-  return <Layout>
+  return <Layout {...props}>
     <h1>Get One Version</h1>
     <div>
       <h2>{version.name} <sup>{version.abbreviation}</sup></h2>

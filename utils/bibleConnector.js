@@ -1,83 +1,74 @@
-import { getBibleApiKey } from "../utils/utils";
-import { XMLHttpRequest } from 'xhr2';
+// import { getBibleApiKey } from "../utils/utils";
 
-const API_KEY = getBibleApiKey();
+/* UNSAFE! Eventually make key secret and not available on the front end. */
+const API_KEY = /* getBibleApiKey() */ '131dc8d218e6dfe778238e7aff2efd1f';
+
 const placeholderVersionId = '06125adad2d5898a-01';
 
-const callBibleAPI = (method, url, data) => {
-  const promise = new Promise((resolve, reject) => {
-    const xhr = new XMLHttpRequest();
-    xhr.withCredentials = false;
-    xhr.open(method, url);
+const fetchFromApi = (url, options, data) => {
+  const opt = {
+    method: 'GET',
+    headers: {},
+  };
 
-    xhr.responseType = 'json';
-    xhr.setRequestHeader(`api-key`, API_KEY);
 
-    if (data) {
-      xhr.setRequestHeader(`Content-Type`, `application/json`);
-    }
+  if (data) {
+    opt.headers['Content-Type'] = 'application/json'
+    opt.body = JSON.stringify(data);
+  };
 
-    xhr.onload = () => {
-      if (xhr.status >= 400) {
-        reject(xhr.response);
-      } else {
-        resolve(xhr.response);
-      }
-    };
+  opt.headers['api-key'] = API_KEY;
 
-    xhr.onerror = () => {
-      reject("Something went wrong.");
-    };
-
-    xhr.send(JSON.stringify(data));
-  });
-  return promise;
-};
+  // allow for use on server or client size
+  if (options?.window)
+    return window.fetch(url, opt);
+  else return fetch(url, opt)
+}
 
 /**
  * Get versions 
  */
-export function getAllVersions() {
-  return callBibleAPI(`GET`, `https://api.scripture.api.bible/v1/bibles`);
+export function getAllVersions(options) {
+  // return callBibleAPI(`GET`, `https://api.scripture.api.bible/v1/bibles`);
+  return fetchFromApi(`https://api.scripture.api.bible/v1/bibles`, options);
 }
 
 /**
  * Get version by ID
  */
-export function getVersionById(id) {
-  return callBibleAPI(`GET`, `https://api.scripture.api.bible/v1/bibles/${id}`);
+export function getVersionById(id, options) {
+  return fetchFromApi(`https://api.scripture.api.bible/v1/bibles/${id}`);
 }
 
 /**
  * Get books list
  */
-export function getAllBooks() {
+export function getAllBooks(options) {
   const bibleId = placeholderVersionId;
-  return callBibleAPI(`GET`, `https://api.scripture.api.bible/v1/bibles/${bibleId}/books`);
+  return fetchFromApi(`https://api.scripture.api.bible/v1/bibles/${bibleId}/books`);
 }
 
 /**
  * Get chapters in a book
  */
-export function getBookById(bookId, fetchChapterSummaries) {
+export function getBookById(bookId, fetchChapterSummaries, options) {
   const bibleId = placeholderVersionId;
-  return callBibleAPI(`GET`, `https://api.scripture.api.bible/v1/bibles/${bibleId}/books/${bookId}?include-chapters=${fetchChapterSummaries}`);
+  return fetchFromApi(`https://api.scripture.api.bible/v1/bibles/${bibleId}/books/${bookId}?include-chapters=${fetchChapterSummaries}`);
 }
 
 /**
- * Get chapters in a book
+ * Get chapters in a book. Remember that chapter summaries can be fetched from getBookById().
  */
-export function getAllChapters(bookId) {
+export function getAllChapters(bookId, options) {
   const bibleId = placeholderVersionId;
-  return callBibleAPI(`GET`, `https://api.scripture.api.bible/v1/bibles/${bibleId}/books/${bookId}/chapters`);
+  return fetchFromApi(`https://api.scripture.api.bible/v1/bibles/${bibleId}/books/${bookId}/chapters`);
 }
 
 /**
  * Search for passages
  */
-export function getResults(searchText) {
+export function getResults(searchText, options) {
   const bibleId = placeholderVersionId;
-  return callBibleAPI(`GET`, `https://api.scripture.api.bible/v1/bibles/${bibleId}/search?query=${searchText}}`);
+  return fetchFromApi(`https://api.scripture.api.bible/v1/bibles/${bibleId}/search?query=${searchText}}`);
 
 }
-

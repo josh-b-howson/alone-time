@@ -1,9 +1,9 @@
 import { Layout } from "../components/layout-components";
 import Link from 'next/link';
 
-const Home = (props) => {
+const Home = (versions) => {
   return (
-    <Layout {...props}>
+    <Layout {...versions}>
       <h1>Home</h1>
       <ul>
         <li>

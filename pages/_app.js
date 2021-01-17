@@ -1,29 +1,21 @@
 import 'react-toastify/dist/ReactToastify.css'
 import { Provider } from 'react-redux'
-import { createStore } from 'redux'
-import rootReducer from '../store/reducers'
-import { composeWithDevTools } from 'redux-devtools-extension'
 import { getAllVersions } from '../utils/bibleConnector'
-import App from 'next/app';
+import { initializeStore } from '../store/store';
 
-const AloneTimeApp = ({ Component, pageProps, versions }) => {
-  const initialState = {}
+const App = ({ Component, pageProps }) => {
 
-  const composedEnhancers = composeWithDevTools()
-  const store = createStore(rootReducer, initialState, composedEnhancers)
+  const store = initializeStore();
 
   return (
     <Provider store={store}>
-      <Component {...pageProps} versions={versions} />
+      <Component {...pageProps} />
     </Provider>
   )
 }
 
-AloneTimeApp.getInitialProps = async (appContext) => {
-  const versions = await getAllVersions().then(res => res.data).catch(`getAllVersions() failed`);
-  // calls page's `getInitialProps` and fills `appProps.pageProps`
-  // const appProps = await App.getInitialProps(appContext);
-  return { versions }
+App.getInitialProps = async (ctx) => {
+  return { pageProps: null }
 }
 
-export default AloneTimeApp;
+export default App;

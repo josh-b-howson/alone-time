@@ -1,10 +1,10 @@
 import { Layout } from "../components/layout-components";
 import { SearchBox } from "../components/search";
 
-const Search = () => {
+const Search = (props) => {
 
   return (
-    <Layout>
+    <Layout {...props}>
       <h1>Search</h1>
       <SearchBox />
     </Layout>

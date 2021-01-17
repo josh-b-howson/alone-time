@@ -5,7 +5,7 @@ import { getAllBooks } from '../utils/bibleConnector';
 const Books = (props) => {
   const books = props.books;
   return (
-    <Layout>
+    <Layout {...props}>
       <h1>Books List</h1>
       <ul>
         {books.map((book, index) => {
@@ -19,11 +19,14 @@ const Books = (props) => {
 export async function getServerSideProps() {
   // Make server-side API call
 
-  const res = await getAllBooks(`06125adad2d5898a-01`);
+  const res = await getAllBooks()
+    .then(res => res.json())
+    .then(json => json.data)
+    .catch(res => console.error(`An error occured in getAllBooks. ${res.error}`));
 
   return {
     props: {
-      books: res.data,
+      books: res,
     }
   }
 }

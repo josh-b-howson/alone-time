@@ -16,7 +16,7 @@ const SearchBox = () => {
   return (
     <form onSubmit={handleSubmit}>
       <input onChange={handleChange} placeholder="Search" />
-      <button role="submit">Search</button>
+      <input type="submit" value="Search" />
     </form>
   )
 }

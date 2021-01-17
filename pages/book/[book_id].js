@@ -1,16 +1,16 @@
 import Link from "next/link";
 import { Layout } from "../../components/layout-components";
-import { getAllChapters, getBookById } from "../../utils/bibleConnector";
+import { getBookById } from "../../utils/bibleConnector";
 
 const Book = (props) => {
   const book = props.book;
   const chapters = props.chapters;
   return (
-    <Layout>
+    <Layout {...props}>
       <h1>{book.name}</h1>
       <ul>
         {book?.chapters.map(chapter => {
-          return <li><Link href={"/"}><a>{chapter.number}</a></Link></li>
+          return <li key={chapter.name + chapter.number}><Link href={"/"}><a>{chapter.number}</a></Link></li>
         })}
       </ul>
     </Layout>
@@ -20,7 +20,10 @@ const Book = (props) => {
 export async function getServerSideProps(ctx) {
   const bookId = ctx.query.book_id;
 
-  const book = await getBookById(bookId, true).then(res => res.data).catch(res => console.error(`getBookById() failed`));
+  const book = await getBookById(bookId, true)
+    .then(res => res.json())
+    .then(json => json.data)
+    .catch(res => console.error(`An error ocurred in getBookById(). ${res.error}`));
   return { props: { book } };
 }
 
