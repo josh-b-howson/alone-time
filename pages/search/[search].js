@@ -18,7 +18,10 @@ const SearchResult = (props) => {
         <>
           <ul>
             {verses.map(verse => <li key={verse.id}>
-              <div>{verse.reference}</div>
+              <div>
+                {verse.reference}
+                <Link href={`/chapter/${verse.chapterId}`}><a>Read Chapter</a></Link>
+              </div>
               <div>{verse.text}</div>
             </li>)}
           </ul>

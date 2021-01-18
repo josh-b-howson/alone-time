@@ -13,7 +13,7 @@ const Home = (versions) => {
           <Link href="/versions"><a>Browse Versions</a></Link>
         </li>
         <li>
-          <Link href="/books"><a>Books</a></Link>
+          <Link href="/books"><a>Read</a></Link>
         </li>
       </ul>
     </Layout>

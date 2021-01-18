@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { setVersionId } from '../store/actions/version';
 import { getAllVersions } from '../utils/bibleConnector';
 import { limitCharacters } from '../utils/utils';

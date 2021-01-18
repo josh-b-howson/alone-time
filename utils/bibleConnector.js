@@ -64,6 +64,11 @@ export function getAllChapters(bookId, options) {
   return fetchFromApi(`https://api.scripture.api.bible/v1/bibles/${bibleId}/books/${bookId}/chapters`);
 }
 
+export function getChapter(query, options) {
+  const bibleId = placeholderVersionId;
+  return fetchFromApi(`https://api.scripture.api.bible/v1/bibles/${bibleId}/chapters/${query.chapter_id}?content-type=json&include-notes=false&include-titles=true&include-chapter-numbers=false&include-verse-numbers=true&include-verse-spans=false`, options)
+}
+
 /**
  * Search for passages
  */
