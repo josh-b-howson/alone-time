@@ -1,12 +1,14 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { setVersion } from '../store/actions/version';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setVersionId } from '../store/actions/version';
 import { getAllVersions } from '../utils/bibleConnector';
 import { limitCharacters } from '../utils/utils';
 
-const LanguageSelect = (props) => {
+const VersionSelect = (props) => {
   const [versionList, setVersionList] = useState(null);
+  const currentVersion = props.currentVersion;
 
+  // fetch list of versions from API, add to version list state
   async function getVersions(window) {
 
     const versions = await getAllVersions({ window: window })
@@ -20,24 +22,30 @@ const LanguageSelect = (props) => {
       console.error("versionList wasn't able to be set. Nothing returned from fetch.")
   }
 
-  const handleClick = (window) => {
+  const populateVersions = () => {
     // only need to get versions if it hasn't yet been fetched
     if (!versionList)
       getVersions(window)
   }
 
+  useEffect(() => {
+    populateVersions();
+  }, [])
+
   const dispatch = useDispatch();
   const handleChange = (e) => {
-    dispatch(setVersion(e.target.value))
+    dispatch(setVersionId(e.target.value))
   }
 
   return <div>
-    <select onChange={handleChange} onClick={e => handleClick(window)}>
+    <select onChange={handleChange}>
       <option value="none">Choose a version</option>
       {versionList && versionList.map(version =>
         <option
           key={version.id}
-          value={version.id}>
+          value={version.id}
+          selected={version.id === currentVersion.id ? 'selected' : ''}
+        >
           {limitCharacters(version.name, { limit: 40, ellipsis: true })}
         </option>
       )}
@@ -45,4 +53,4 @@ const LanguageSelect = (props) => {
   </div>
 }
 
-export default LanguageSelect;
+export default VersionSelect;
