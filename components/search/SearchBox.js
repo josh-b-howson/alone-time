@@ -1,16 +1,26 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
+import { useSelector } from 'react-redux';
 
 const SearchBox = () => {
   const router = useRouter();
   const [searchQuery, setSearchQuery] = useState('')
+  const versionId = useSelector(state => state.version.version);
+  const showVersion = () => alert(`${versionId}, ${searchQuery}`);
 
   const handleChange = (e) => {
     setSearchQuery(e.target.value);
   }
 
   const handleSubmit = (e) => {
-    router.push(`/search/${searchQuery}`);
+    e.preventDefault();
+    router.push({
+      pathname: 'search/[search]',
+      query: {
+        search: searchQuery,
+        version: versionId,
+      }
+    });
   }
 
   return (

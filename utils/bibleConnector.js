@@ -67,8 +67,20 @@ export function getAllChapters(bookId, options) {
 /**
  * Search for passages
  */
-export function getResults(searchText, options) {
+export function getResults(query, options) {
   const bibleId = placeholderVersionId;
-  return fetchFromApi(`https://api.scripture.api.bible/v1/bibles/${bibleId}/search?query=${searchText}}`);
 
+  if (!query.version) return null;
+  let searchUrl = `https://api.scripture.api.bible/v1/bibles/${query.version}/search`;
+
+  /* Concatenate search parameters */
+  if (query.search)
+    searchUrl += `?query=${query.search}`;
+  if (query.page)
+    // -1 since offset starts counting at 0
+    searchUrl += `&offset=${query.page - 1}`;
+  if (query.sort && ['relevance', 'canonical', 'reverse-canonical'].includes(query.sort))
+    searchUrl += `&sort=${query.sort}`;
+
+  return fetchFromApi(searchUrl, options);
 }

@@ -44,9 +44,9 @@ const VersionSelect = (props) => {
         <option
           key={version.id}
           value={version.id}
-          selected={version.id === currentVersion.id ? 'selected' : ''}
+          selected={currentVersion && version.id === currentVersion.id ? 'selected' : ''}
         >
-          {limitCharacters(version.name, { limit: 40, ellipsis: true })}
+          {limitCharacters(`${version.abbreviation} - ${version.name}`, { limit: 40, ellipsis: true })}
         </option>
       )}
     </select>
