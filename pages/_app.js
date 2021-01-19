@@ -2,6 +2,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Provider } from 'react-redux';
 import { initializeStore } from '../store/store';
 import dookie from '../utils/dookie';
+import '../scss/main.scss';
 
 const App = ({ Component, pageProps }) => {
 
