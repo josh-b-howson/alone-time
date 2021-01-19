@@ -16,7 +16,11 @@ const App = ({ Component, pageProps }) => {
 
 App.getInitialProps = async (appContext) => {
   const { ctx } = appContext;
-  const { currentVersionId } = dookie.get(ctx);
+  const cookies = dookie.get(ctx);
+  const currentVersionId = cookies.currentVersionId
+    ? cookies.currentVersionId
+    : null;
+    
   // const currentVersion = await getVersionById(currentVersionId)
   //   .then(res => res.json())
   //   .then(json => json.data)

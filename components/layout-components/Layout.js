@@ -8,7 +8,6 @@ import { setVersionId } from '../../store/actions/version';
 
 
 const Layout = (props) => {
-
   const dispatch = useDispatch();
   // entire version object from API
   const [currentVersion, setCurrentVersion] = useState();
@@ -17,6 +16,8 @@ const Layout = (props) => {
 
   /* fetches the current version object from the API, adds to currentVersion state */
   async function updateCurrentVersion(id) {
+    // don't call api if no id is passed
+    if (!id) return;
     const res = await getVersionById(id, { window: window })
       .then(res => res.json())
       .then(json => json.data)
@@ -24,10 +25,6 @@ const Layout = (props) => {
     setCurrentVersion(res);
     dispatch(setVersionId(res.id))
   }
-
-  // if current version is not yet set and cookie is present, set current state
-  if (currentVersion && props.currentVersionFromCookie)
-    updateCurrentVersion(props.currentVersionFromCookie.id)
 
   // update the redux state on first load & when versionId changes
   useEffect(() => {
