@@ -34,7 +34,6 @@ const Layout = (props) => {
 
   return (
     <div className="layout">
-      <div className="hello">Hello World!</div>
       <header>
         <Link href="/" prefetch={false}><a>back to home</a></Link>
         <VersionSelect currentVersion={currentVersion} />
