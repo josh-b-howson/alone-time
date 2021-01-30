@@ -5,8 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { getVersionById } from '../../utils/bibleConnector';
 import { setVersionId } from '../../store/actions/version';
-import Head from 'next/head';
 import PropTypes from 'prop-types';
+import { Head } from './';
 
 const Layout = (props) => {
   const dispatch = useDispatch();
@@ -35,13 +35,9 @@ const Layout = (props) => {
 
   return (
     <>
-      <Head>
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <title>{props.title} &ndash; Alone Time</title>
-      </Head>
+      <Head {...props} />
       <div className="layout">
         <header>
-          <div><small>*Note* Currently only the search page works with your selected version. And even there you need to go back to the search page to update your version.</small></div>
           <Link href="/" prefetch={false}><a>back to home</a></Link>
           <VersionSelect currentVersion={currentVersion} />
           <div>Version: <b>{currentVersion ? currentVersion?.name : 'No version selected'}</b></div>
