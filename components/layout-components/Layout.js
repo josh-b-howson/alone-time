@@ -41,9 +41,10 @@ const Layout = (props) => {
       </Head>
       <div className="layout">
         <header>
+          <div><small>*Note* Currently only the search page works with your selected version. And even there you need to go back to the search page to update your version.</small></div>
           <Link href="/" prefetch={false}><a>back to home</a></Link>
           <VersionSelect currentVersion={currentVersion} />
-          <div>The current version is: {currentVersion ? currentVersion?.name : 'No version selected'}</div>
+          <div>Version: <b>{currentVersion ? currentVersion?.name : 'No version selected'}</b></div>
         </header>
         <ToastContainer />
         {props.children}
