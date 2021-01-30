@@ -33,15 +33,20 @@ const Layout = (props) => {
   }, [versionIdFromRedux]);
 
   return (
-    <div className="layout">
-      <header>
-        <Link href="/" prefetch={false}><a>back to home</a></Link>
-        <VersionSelect currentVersion={currentVersion} />
-        <div>The current version is: {currentVersion ? currentVersion?.name : 'No version selected'}</div>
-      </header>
-      <ToastContainer />
-      {props.children}
-    </div>
+    <>
+      <Head>
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+      </Head>
+      <div className="layout">
+        <header>
+          <Link href="/" prefetch={false}><a>back to home</a></Link>
+          <VersionSelect currentVersion={currentVersion} />
+          <div>The current version is: {currentVersion ? currentVersion?.name : 'No version selected'}</div>
+        </header>
+        <ToastContainer />
+        {props.children}
+      </div>
+    </>
   )
 }
 
