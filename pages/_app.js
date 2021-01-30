@@ -22,10 +22,6 @@ App.getInitialProps = async (appContext) => {
     ? cookies.currentVersionId
     : null;
     
-  // const currentVersion = await getVersionById(currentVersionId)
-  //   .then(res => res.json())
-  //   .then(json => json.data)
-  //   .catch(res => console.log(`An error occurred in getVersionById.${ res.error }`));
   return { pageProps: { versionIdFromCookie: currentVersionId } }
 }
 

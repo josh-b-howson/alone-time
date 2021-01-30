@@ -5,8 +5,7 @@ import { getChapter } from "../../utils/bibleConnector";
 
 const Read = (props) => {
   const chapter = props.chapter;
-  // console.log(chapter);
-  
+
   return <Layout {...props}>
     <h1>{chapter.reference}</h1>
     <main className="read">

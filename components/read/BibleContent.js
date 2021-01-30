@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 
 const BibleContent = (props) => {
   const content = props.content;
-  console.log(content)
 
   const ContentTag = (props) => {
     const item = props.item;
@@ -41,7 +40,6 @@ const BibleContent = (props) => {
       case 'text': return <Text item={item} />
       default:
         console.error(`unknown content type "${item.type}". Check renderContentFromJson().`);
-        // console.log(item)
         return null;
     }
   }
