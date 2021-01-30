@@ -5,14 +5,16 @@ import { getResults } from "../../utils/bibleConnector";
 const SearchResult = (props) => {
   const result = props?.result;
   const verses = result?.verses;
+  const searchQuery = props.searchQuery;
+  const queryVersionId = searchQuery.version;
 
   // pagination
   const totalPages = Math.ceil(result?.total / result?.limit)
   const currentPage = result?.offset + 1;
 
   return (
-    <Layout {...props} title={`Search for "${props.searchQuery.search}"`}>
-      <h1>Results for "{props.searchQuery.search}"</h1>
+    <Layout {...props} title={`Search for "${searchQuery.search}"`}>
+      <h1>Results for "{searchQuery.search}"</h1>
       <p>Results: {result?.total ? result?.total : 'none'}</p>
       {verses?.length > 0 ?
         <>
@@ -20,7 +22,7 @@ const SearchResult = (props) => {
             {verses.map(verse => <li key={verse.id}>
               <div>
                 {verse.reference}
-                <Link href={`/chapter/${verse.chapterId}`}><a>Read Chapter</a></Link>
+                <Link href={`/chapter/${verse.chapterId}?version=${queryVersionId}`}><a>Read Chapter</a></Link>
               </div>
               <div>{verse.text}</div>
             </li>)}
