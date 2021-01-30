@@ -72,7 +72,6 @@ export function getChapter(query, options) {
  * Search for passages
  */
 export function getResults(query, options) {
-  const bibleId = placeholderVersionId;
 
   if (!query.version) return null;
   let searchUrl = `https://api.scripture.api.bible/v1/bibles/${query.version}/search`;
@@ -80,9 +79,13 @@ export function getResults(query, options) {
   /* Concatenate search parameters */
   if (query.search)
     searchUrl += `?query=${query.search}`;
-  if (query.page)
+  if (query.page) {
+    let offset = 0;
+    if (query.page >= 1)
+      offset = (query.page - 1) * 10;
     // -1 since offset starts counting at 0
-    searchUrl += `&offset=${query.page - 1}`;
+    searchUrl += `&offset=${offset}`;
+  }
   if (query.sort && ['relevance', 'canonical', 'reverse-canonical'].includes(query.sort))
     searchUrl += `&sort=${query.sort}`;
 

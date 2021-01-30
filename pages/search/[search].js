@@ -10,7 +10,7 @@ const SearchResult = (props) => {
 
   // pagination
   const totalPages = Math.ceil(result?.total / result?.limit)
-  const currentPage = result?.offset + 1;
+  const currentPage = Math.ceil(result?.offset / result?.limit) + 1;
 
   return (
     <Layout {...props} title={`Search for "${searchQuery.search}"`}>
@@ -31,9 +31,15 @@ const SearchResult = (props) => {
           <ul>
             <li>Total results: {result?.total}</li>
             <li>Result limit/page: {result?.limit}</li>
-            <li>Page offset: {result?.offset}</li>
+            <li>Result offset: {result?.offset}</li>
             <li>Page: {currentPage} of {totalPages}</li>
           </ul>
+          {currentPage > 1 &&
+            <Link href={`/search/${searchQuery.search}?version=${searchQuery.version}&page=${currentPage - 1}`}><a>Previous page</a></Link>
+          }
+          {currentPage < totalPages &&
+            <Link href={`/search/${searchQuery.search}?version=${searchQuery.version}&page=${currentPage + 1}`}><a>Next page</a></Link>
+          }
         </>
         : <div>No Results. Try a new search or switch to a different version.<br /> <Link href='/'><a>Back to home</a></Link><Link href='/search'><a>Back to search</a></Link></div>}
     </Layout>
@@ -43,21 +49,23 @@ const SearchResult = (props) => {
 export async function getServerSideProps(ctx) {
   const query = ctx.query;
   const queryVersion = query.version;
+  let result = null;
 
-  if (!queryVersion) {
-    return { props: { result: null } };
-  } else {
-    const result = await getResults(query)
+  // only fetch if version passed / page >= 1
+  if (queryVersion && query.page >= 1) {
+    result = await getResults(query)
       .then(res => res.json())
       .then(json => json.data)
       .catch(res => console.error(`An error ocurred in getResults(). ${res.error}`));
-    return {
-      props: {
-        searchQuery: query,
-        result: result,
-      }
-    };
   }
+
+  return {
+    props: {
+      searchQuery: query,
+      result: result,
+    }
+  };
+
 }
 
 export default SearchResult;
