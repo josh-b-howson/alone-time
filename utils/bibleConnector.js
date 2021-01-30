@@ -43,9 +43,8 @@ export function getVersionById(id, options) {
 /**
  * Get books list
  */
-export function getAllBooks(options) {
-  const bibleId = placeholderVersionId;
-  return fetchFromApi(`https://api.scripture.api.bible/v1/bibles/${bibleId}/books`);
+export function getAllBooks(version, options) {
+  return fetchFromApi(`https://api.scripture.api.bible/v1/bibles/${version}/books`);
 }
 
 /**
