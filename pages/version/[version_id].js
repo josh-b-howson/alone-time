@@ -9,10 +9,11 @@ const GetOneVersion = (props) => {
   const dispatch = useDispatch()
   const router = useRouter();
   const version = props.version;
+  const queryVersionId = props.queryVersionId;
 
   const handleReadNow = () => {
-    dispatch(setVersionId(version.id));
-    router.push('/books');
+    dispatch(setVersionId(queryVersionId));
+    router.push(`/books?version=${queryVersionId}`);
   }
 
   return <Layout {...props} title={`${version.name} Version Information`}>
@@ -38,7 +39,7 @@ export async function getServerSideProps(ctx) {
     .then(json => json.data)
     .catch(res => console.error(`getVersionsById() failed. ${res.error}`));
 
-  return { props: { version: version } };
+  return { props: { queryVersionId: versionId, version: version } };
 }
 
 export default GetOneVersion;
