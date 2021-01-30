@@ -6,7 +6,7 @@ import { getChapter } from "../../utils/bibleConnector";
 const Read = (props) => {
   const chapter = props.chapter;
 
-  return <Layout {...props}>
+  return <Layout {...props} title={`Read ${chapter.reference}`}>
     <h1>{chapter.reference}</h1>
     <main className="read">
       <BibleContent content={chapter.content} />

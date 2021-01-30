@@ -5,7 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { getVersionById } from '../../utils/bibleConnector';
 import { setVersionId } from '../../store/actions/version';
-
+import Head from 'next/head';
+import PropTypes from 'prop-types';
 
 const Layout = (props) => {
   const dispatch = useDispatch();
@@ -36,6 +37,7 @@ const Layout = (props) => {
     <>
       <Head>
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <title>{props.title} &ndash; Alone Time</title>
       </Head>
       <div className="layout">
         <header>
@@ -48,6 +50,10 @@ const Layout = (props) => {
       </div>
     </>
   )
+}
+
+Layout.propTypes = {
+  title: PropTypes.string.isRequired,
 }
 
 export default Layout;

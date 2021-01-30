@@ -7,7 +7,7 @@ const Versions = (props) => {
   const versions = props.versions;
 
   return (
-    <Layout {...props}>
+    <Layout {...props} title="Bible Versions">
       <h1>Bible Versions</h1>
       <ul>
         {versions && versions.map(version =>

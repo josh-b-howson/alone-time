@@ -11,9 +11,9 @@ const SearchResult = (props) => {
   const currentPage = result?.offset + 1;
 
   return (
-    <Layout {...props}>
-      <h1>Search Results</h1>
-      <p>Results: {result?.total}</p>
+    <Layout {...props} title={`Search for "${props.searchQuery.search}"`}>
+      <h1>Results for "{props.searchQuery.search}"</h1>
+      <p>Results: {result?.total ? result?.total : 'none'}</p>
       {verses?.length > 0 ?
         <>
           <ul>
@@ -33,7 +33,7 @@ const SearchResult = (props) => {
             <li>Page: {currentPage} of {totalPages}</li>
           </ul>
         </>
-        : <div>No Results. <Link href='/'><a>Back to home</a></Link></div>}
+        : <div>No Results. Try a new search or switch to a different version.<br /> <Link href='/'><a>Back to home</a></Link><Link href='/search'><a>Back to search</a></Link></div>}
     </Layout>
   )
 }
@@ -49,7 +49,12 @@ export async function getServerSideProps(ctx) {
       .then(res => res.json())
       .then(json => json.data)
       .catch(res => console.error(`An error ocurred in getResults(). ${res.error}`));
-    return { props: { result: result } };
+    return {
+      props: {
+        searchQuery: query,
+        result: result,
+      }
+    };
   }
 }
 

@@ -4,7 +4,7 @@ import { SearchBox } from "../components/search";
 const Search = (props) => {
 
   return (
-    <Layout {...props}>
+    <Layout {...props} title="Search the Bible">
       <h1>Search</h1>
       <SearchBox />
     </Layout>

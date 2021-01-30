@@ -6,7 +6,7 @@ const Book = (props) => {
   const book = props.book;
   const chapters = props.chapters;
   return (
-    <Layout {...props}>
+    <Layout {...props} title={book.name}>
       <h1>{book.name}</h1>
       <ul>
         {book?.chapters.map(chapter => {

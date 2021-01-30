@@ -15,8 +15,8 @@ const GetOneVersion = (props) => {
     router.push('/books');
   }
 
-  return <Layout {...props}>
-    <h1>Get One Version</h1>
+  return <Layout {...props} title={`${version.name} Version Information`}>
+    <h1>Version</h1>
     <div>
       <h2>{version.name} <sup>{version.abbreviation}</sup></h2>
       <p>ID: {version.id}</p>

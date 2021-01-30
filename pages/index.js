@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 const Home = (versions) => {
   return (
-    <Layout {...versions}>
+    <Layout {...versions} title="Home">
       <h1>Home</h1>
       <ul>
         <li>
