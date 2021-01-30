@@ -10,10 +10,10 @@ const Read = (props) => {
   return <Layout {...props}>
     <h1>{chapter.reference}</h1>
     <main className="read">
-    <BibleContent content={chapter.content} />
+      <BibleContent content={chapter.content} />
     </main>
-    <Link href={`/chapter/${chapter.previous.id}`}><a>Previous Chapter</a></Link>
-    <Link href={`/chapter/${chapter.next.id}`}><a>Next Chapter</a></Link>
+    {chapter.previous && <Link href={`/chapter/${chapter.previous.id}`}><a>Previous Chapter</a></Link>}
+    {chapter.next && <Link href={`/chapter/${chapter.next.id}`}><a>Next Chapter</a></Link>}
   </Layout>
 }
 
