@@ -44,15 +44,14 @@ export function getVersionById(id, options) {
  * Get books list
  */
 export function getAllBooks(version, options) {
-  return fetchFromApi(`https://api.scripture.api.bible/v1/bibles/${version}/books`);
+  return fetchFromApi(`https://api.scripture.api.bible/v1/bibles/${version}/books`, options);
 }
 
 /**
  * Get chapters in a book
  */
-export function getBookById(bookId, fetchChapterSummaries, options) {
-  const bibleId = placeholderVersionId;
-  return fetchFromApi(`https://api.scripture.api.bible/v1/bibles/${bibleId}/books/${bookId}?include-chapters=${fetchChapterSummaries}`);
+export function getBookById(bookId, version, fetchChapterSummaries, options) {
+  return fetchFromApi(`https://api.scripture.api.bible/v1/bibles/${version}/books/${bookId}?include-chapters=${fetchChapterSummaries}`, options);
 }
 
 /**
@@ -60,12 +59,13 @@ export function getBookById(bookId, fetchChapterSummaries, options) {
  */
 export function getAllChapters(bookId, options) {
   const bibleId = placeholderVersionId;
-  return fetchFromApi(`https://api.scripture.api.bible/v1/bibles/${bibleId}/books/${bookId}/chapters`);
+  return fetchFromApi(`https://api.scripture.api.bible/v1/bibles/${bibleId}/books/${bookId}/chapters`, options);
 }
 
 export function getChapter(query, options) {
-  const bibleId = placeholderVersionId;
-  return fetchFromApi(`https://api.scripture.api.bible/v1/bibles/${bibleId}/chapters/${query.chapter_id}?content-type=json&include-notes=false&include-titles=true&include-chapter-numbers=false&include-verse-numbers=true&include-verse-spans=false`, options)
+  const version = query.version;
+  const chapterId = query.chapter_id;
+  return fetchFromApi(`https://api.scripture.api.bible/v1/bibles/${version}/chapters/${chapterId}?content-type=json&include-notes=false&include-titles=true&include-chapter-numbers=false&include-verse-numbers=true&include-verse-spans=false`, options)
 }
 
 /**

@@ -17,7 +17,8 @@ const Read = (props) => {
 }
 
 export async function getServerSideProps(ctx) {
-  const chapter = await getChapter(ctx.query)
+  const query = ctx.query;
+  const chapter = await getChapter(query)
     .then(res => res.json())
     .then(json => json.data)
     .catch(res => console.error(`An error occurred in getChapter(). ${res.error}`));
