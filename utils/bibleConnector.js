@@ -1,7 +1,7 @@
 // import { getBibleApiKey } from "../utils/utils";
 
 /* UNSAFE! Eventually make key secret and not available on the front end. */
-const API_KEY = /* getBibleApiKey() */ '8b2b2de8fc67cb6d51223b958cc91115';
+const API_KEY = /* getBibleApiKey() */ '131dc8d218e6dfe778238e7aff2efd1f';
 
 const placeholderVersionId = '06125adad2d5898a-01';
 

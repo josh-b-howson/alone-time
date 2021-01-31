@@ -3,6 +3,19 @@ import { useDispatch } from 'react-redux';
 import { setVersionId } from '../store/actions/version';
 import { getAllVersions } from '../utils/bibleConnector';
 import { getFeaturedVersions, limitCharacters } from '../utils/utils';
+import { Dropdown } from './layout-components';
+
+const Version = (props) => {
+  const { version, onClick } = props;
+
+  return (
+    <div
+      key={version.id}
+      onClick={() => onClick(version.id)}>
+      {limitCharacters(`${version.name} - ${version.abbreviation}`, { limit: 40, ellipsis: true })}
+    </div>
+  )
+}
 
 const VersionSelect = (props) => {
   const [versionList, setVersionList] = useState(null);
@@ -37,35 +50,26 @@ const VersionSelect = (props) => {
   }, [])
 
   const dispatch = useDispatch();
-  const handleChange = (e) => {
-    dispatch(setVersionId(e.target.value))
+  const setCurrentVersion = (versionId) => {
+    dispatch(setVersionId(versionId))
   }
 
-  return <div>
-    <select onChange={handleChange}>
-      <option value="none">Choose a version</option>
-      {featuredVersionList &&
-        <optgroup label="Featured">
-          {featuredVersionList.map(version =>
-            <option
-              key={version.id}
-              value={version.id}>
-              {limitCharacters(`${version.name} - ${version.abbreviation}`, { limit: 40, ellipsis: true })}
-            </option>)}
-        </optgroup>}
-      {versionList &&
-        <optgroup label="All">
-          {versionList.map(version =>
-            <option
-              key={version.id}
-              value={version.id}
-              selected={currentVersion && version.id === currentVersion.id ? 'selected' : ''}>
-              {limitCharacters(`${version.name} - ${version.abbreviation}`, { limit: 40, ellipsis: true })}
-            </option>)}
-        </optgroup>
-      }
-    </select>
-  </div>
+  const getVersionItems = (list) => {
+    return list && list.map(version =>
+      <Version
+        key={version.id}
+        version={version}
+        onClick={setCurrentVersion} />
+    )
+  }
+
+return <div>
+  <Dropdown toggler={currentVersion && currentVersion.abbreviation}>
+    {getVersionItems(featuredVersionList)}
+    <div><b>ALL:</b></div>
+    {getVersionItems(versionList)}
+  </Dropdown>
+</div>
 }
 
 export default VersionSelect;
