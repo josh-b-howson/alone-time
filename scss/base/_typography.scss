@@ -25,5 +25,6 @@ a {
     outline: none;
     text-decoration-thickness: 0.3em;
     text-decoration-color: $color-focused;
+    text-decoration-skip-ink: none;
   }
 }
