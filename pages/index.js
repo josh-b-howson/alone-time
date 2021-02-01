@@ -1,24 +1,18 @@
 import { Layout } from "../components/layout-components";
-import Link from 'next/link';
+import { VersionSelect } from "../components";
+import { SearchBox } from '../components/search';
+import Link from "next/link";
 import { useSelector } from "react-redux";
 
-const Home = (versions) => {
+const Home = (props) => {
+  const currentVersionId = useSelector(state => state.version.version);
 
-  const currentVersionId = useSelector(state => state.version?.version);
   return (
-    <Layout {...versions} title="Home">
-      <h1>Home</h1>
-      <ul>
-        <li>
-          <Link href="/search"><a>Search</a></Link>
-        </li>
-        <li>
-          <Link href="/versions"><a>Browse Versions</a></Link>
-        </li>
-        <li>
-          <Link href={`/books?version=${currentVersionId}`}><a>Read</a></Link>
-        </li>
-      </ul>
+    <Layout title="Home">
+      <h1>Find Something</h1>
+      <VersionSelect {...props} />
+      <SearchBox />
+      Or <Link href={`/books?version=${currentVersionId}`}><a>Choose a Book</a></Link>
     </Layout>
   )
 }

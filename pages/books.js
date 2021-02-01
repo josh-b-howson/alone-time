@@ -3,6 +3,10 @@ import { useSelector } from 'react-redux';
 import { Layout } from '../components/layout-components';
 import { getAllBooks } from '../utils/bibleConnector';
 
+/**
+ * Expected URL:
+ * /books?version=${currentVersionId}
+ */
 const Books = (props) => {
   const currentVersionId = useSelector(state => state.version?.version);
   const books = props.books;
