@@ -15,7 +15,7 @@ const Dropdown = (props) => {
   ].filter(i => !!i).join(' ');
   const contentClassName = [
     "dd__content",
-    props.className,
+    props.contentClassName,
   ].filter(i => !!i).join(' ');
 
   const ddContent = useRef(null);
@@ -44,22 +44,28 @@ const Dropdown = (props) => {
         onClick={dropDown}>
         {props.toggler}
       </button>
-      <div
+      <props.contentTag
         className={contentClassName}
         ref={ddContent}>
         {props.children}
-      </div>
-      <style jsx>{`
-        .dd__content {
+      </props.contentTag>
+      <style global jsx>{`
+        .dd__content.${props.contentClassName} {
           display: ${droppedDown ? 'block' : 'none'};
         }
       `}</style>
     </>
   )
 }
+Dropdown.defaultProps = {
+  contentTag: 'div',
+}
 
 Dropdown.propTypes = {
   toggler: PropTypes.node.isRequired,
+  /** Content class is important to ensure the show/hide toggling
+   *  applies to this component & this component only */
+  contentClassName: PropTypes.string.isRequired,
 }
 
 export default Dropdown;
