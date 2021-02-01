@@ -44,7 +44,7 @@ const SearchResult = (props) => {
             <>You went too far! <Link href={`/search/${searchQuery.search}?version=${searchQuery.version}&page=${1}`}><a>Back to results</a></Link></>
           }
         </>
-        : <div>No Results. Try a new search or switch to a different version.<br /> <Link href='/'><a>Back to home</a></Link><Link href='/search'><a>Back to search</a></Link></div>}
+        : <div>No Results. Try a new search or switch to a different version.<br /> <Link href='/'><a>Back to home</a></Link></div>}
     </Layout>
   )
 }
