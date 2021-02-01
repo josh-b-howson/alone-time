@@ -1,3 +1,4 @@
+import styles from './SearchBox.module.scss';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { useSelector } from 'react-redux';
@@ -24,9 +25,9 @@ const SearchBox = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input onChange={handleChange} placeholder="Search" />
-      <input type="submit" value="Search" />
+    <form className={styles.searchBox} onSubmit={handleSubmit}>
+      <div className={`${styles.input__wrap} input__wrap`}><input className={styles.input} type="text" onChange={handleChange} placeholder="Search" /></div>
+      <input className={`${styles.submit} btn btn--primary`} type="submit" value="Search" />
     </form>
   )
 }

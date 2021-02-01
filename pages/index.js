@@ -9,10 +9,22 @@ const Home = (props) => {
 
   return (
     <Layout title="Home">
-      <h1>Find Something</h1>
-      <VersionSelect {...props} />
-      <SearchBox />
-      Or <Link href={`/books?version=${currentVersionId}`}><a>Choose a Book</a></Link>
+      <div className="home__title">
+        <h1>Find Something</h1>
+        <VersionSelect {...props} />
+      </div>
+      <div className="home__search">
+        <SearchBox />
+      </div>
+      <div className="home__books">
+        Or <Link href={`/books?version=${currentVersionId}`}><a>Choose a Book</a></Link>
+      </div>
+      <style jsx>{`
+        .home__title {display:flex; flex-wrap:nowrap; align-items:center; justify-content:flex-start; gap:1rem; margin-top:1.5rem}
+        .home__title h1 {color:var(--color-text-light)}
+        .home__search {margin-top:.8rem}
+        .home__books {margin-top:2rem}
+      `}</style>
     </Layout>
   )
 }

@@ -1,0 +1,38 @@
+$color-text-btn: #444;
+.btn {
+  &--sm {
+    height: 3.2rem;
+  }
+
+  &--md {
+    height: 4rem;
+  }
+
+  &--primary {
+    color: #fff;
+    background-color: $color-primary-500;
+  }
+
+  &--bar {
+    @include barLeft;
+    @include shadow;
+    color: $color-text-light;
+
+    &:focus {
+      @include barLeftGrow;
+    }
+  }
+
+  @include focusShadow;
+
+  height: 4rem;
+  line-height: 1;
+  padding: 0.3rem 1.6rem;
+
+  color: $color-text-btn;
+  background-color: #fff;
+  border: none;
+  border-radius: $border-radius-small;
+
+  cursor: pointer;
+}

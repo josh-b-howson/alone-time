@@ -8,11 +8,10 @@ import PropTypes from 'prop-types';
  * @param {*} props 
  */
 const Dropdown = (props) => {
-
   // concatenate classNames
   const togglerClassName = [
     "dd__toggler",
-    props.className,
+    props.togglerClassName,
   ].filter(i => !!i).join(' ');
   const contentClassName = [
     "dd__content",

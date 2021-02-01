@@ -1,10 +1,4 @@
-import { ToastContainer } from 'react-toastify';
-import Link from 'next/link';
-import { VersionSelect } from '../../components';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
-import { getVersionById } from '../../utils/bibleConnector';
-import { setVersionId } from '../../store/actions/version';
+import styles from './Layout.module.scss';
 import PropTypes from 'prop-types';
 import { Head } from './';
 
@@ -13,7 +7,7 @@ const Layout = (props) => {
   return (
     <>
       <Head {...props} />
-      <main className="layout">
+      <main className={styles.layout}>
         {props.children}
       </main>
     </>

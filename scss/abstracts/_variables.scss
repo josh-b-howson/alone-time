@@ -1,0 +1,18 @@
+$color-primary-100: #f4f1f2;
+$color-primary-500: #b43161;
+$color-primary-600: #812949;
+
+$color-text-normal: #444444;
+$color-text-light: #7f828f;
+$color-link: #b43161;
+$color-link-visited: #7a108f;
+
+$color-focused: rgba(24, 136, 211, 0.5);
+
+$border-radius-small: 3px;
+
+// Set custom properties
+:root {
+  --color-primary-500: #{$color-primary-500};
+  --color-text-light: #{$color-text-light};
+}

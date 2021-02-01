@@ -1,0 +1,18 @@
+.input__wrap {
+  @include barLeft;
+  @include shadow;
+  @include focusShadow;
+
+  border-radius: $border-radius-small;
+
+  &:focus,
+  &:focus-within {
+    @include barLeftGrow;
+  }
+}
+
+input[type="text"] {
+  border: none;
+  height: 4rem;
+  padding: 0 0.8em;
+}

@@ -1,0 +1,17 @@
+.searchBox {
+  display: flex;
+  flex-wrap: none;
+}
+
+.input {
+  width: 100%;
+}
+
+.input__wrap {
+  flex: 1;
+}
+
+.submit {
+  position: relative;
+  left: -0.5rem;
+}

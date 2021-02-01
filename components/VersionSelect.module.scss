@@ -1,0 +1,12 @@
+.toggler {
+  & span,
+  & svg {
+    vertical-align: middle;
+  }
+  & svg {
+    height: 1.125em;
+    width: 1.125em;
+    margin-left: 0.375em;
+    fill: var(--color-primary-500);
+  }
+}
