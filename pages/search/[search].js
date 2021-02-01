@@ -16,7 +16,7 @@ const SearchResult = (props) => {
     <Layout {...props} title={`Search for "${searchQuery.search}"`}>
       <h1>Results for "{searchQuery.search}"</h1>
       <p>Results: {result?.total ? result?.total : 'none'}</p>
-      {verses?.length > 0 ?
+      {result?.total > 0 ?
         <>
           <ul>
             {verses.map(verse => <li key={verse.id}>
@@ -39,6 +39,9 @@ const SearchResult = (props) => {
           }
           {currentPage < totalPages &&
             <Link href={`/search/${searchQuery.search}?version=${searchQuery.version}&page=${currentPage + 1}`}><a>Next page</a></Link>
+          }
+          {currentPage > totalPages &&
+            <>You went too far! <Link href={`/search/${searchQuery.search}?version=${searchQuery.version}&page=${1}`}><a>Back to results</a></Link></>
           }
         </>
         : <div>No Results. Try a new search or switch to a different version.<br /> <Link href='/'><a>Back to home</a></Link><Link href='/search'><a>Back to search</a></Link></div>}
