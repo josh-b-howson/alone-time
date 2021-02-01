@@ -7,7 +7,7 @@ const SearchResult = (props) => {
   const verses = result?.verses;
   const searchQuery = props.searchQuery;
   const queryVersionId = searchQuery.version;
-
+  console.log(result)
   // pagination
   const totalPages = Math.ceil(result?.total / result?.limit)
   const currentPage = Math.ceil(result?.offset / result?.limit) + 1;
@@ -52,7 +52,7 @@ export async function getServerSideProps(ctx) {
   let result = null;
 
   // only fetch if version passed / page >= 1
-  if (queryVersion && query.page >= 1) {
+  if (queryVersion) {
     result = await getResults(query)
       .then(res => res.json())
       .then(json => json.data)
