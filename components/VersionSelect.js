@@ -88,6 +88,8 @@ const VersionSelect = props => {
 
   return <div>
     <Dropdown
+      contentClassName="version-select"
+      contentTag="ul"
       toggler={<>
         {currentVersion
           ? <span>{currentVersion.abbreviation}</span>
