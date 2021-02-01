@@ -21,18 +21,53 @@ const Dropdown = (props) => {
   const ddContent = useRef(null);
   const [droppedDown, setDroppedDown] = useState(false);
 
+  const addDroppedDownEventListeners = () => {
+    document.addEventListener('click', handleClickWhileDroppedDown);
+    document.addEventListener('keyup', handleKeyUpWhileDroppedDown);
+  }
+
+  const removeDroppedDownEventListeners = () => {
+    document.removeEventListener('click', handleClickWhileDroppedDown);
+    document.removeEventListener('keyup', handleKeyUpWhileDroppedDown);
+  }
+
   const handleClickWhileDroppedDown = (e) => {
     if (ddContent.current && !ddContent.current.contains(e.target)) {
       setDroppedDown(false);
-      document.removeEventListener('click', handleClickWhileDroppedDown);
+      removeDroppedDownEventListeners();
+    }
+  };
+
+  const handleKeyUpWhileDroppedDown = (e) => {
+    if (e.code === 'Escape') {
+      setDroppedDown(false);
+      removeDroppedDownEventListeners();
     }
   };
 
   useEffect(() => {
-    if (droppedDown)
-      document.addEventListener('click', handleClickWhileDroppedDown);
+    if (droppedDown) {
+      addDroppedDownEventListeners();
+
+      /* This is really unnecessary but fun. Scrolls the element 
+      to the top but also recursively scrolls child nodes to the 
+      top. If a component is very big, this could have a performance 
+      impact. In that case, probably disable this via props or 
+      remove altogether. */
+      const recursiveScrollAllChildrenToTop = (node) => {
+        if (node.childNodes.length > 0)
+          node.childNodes.forEach(child => {
+            child.scrollTop = 0;
+            recursiveScrollAllChildrenToTop(child);
+          });
+      }
+      recursiveScrollAllChildrenToTop(ddContent.current);
+      // console.log(ddContent.current.childNodes);
+    }
     // cleanup on unmount
-    return () => document.removeEventListener('click', handleClickWhileDroppedDown);
+    return () => {
+      removeDroppedDownEventListeners();
+    }
   }, [droppedDown]);
 
   const dropDown = () => setDroppedDown(true);
@@ -46,7 +81,8 @@ const Dropdown = (props) => {
       </button>
       <props.contentTag
         className={contentClassName}
-        ref={ddContent}>
+        ref={ddContent}
+        tabIndex="-1">
         {props.children}
       </props.contentTag>
       <style global jsx>{`

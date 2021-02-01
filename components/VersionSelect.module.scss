@@ -1,3 +1,10 @@
+@import "../scss/abstracts/mixins";
+@import "../scss/abstracts/variables";
+
+.versionSelect {
+  position: relative;
+}
+
 .toggler {
   & span,
   & svg {
@@ -9,4 +16,65 @@
     margin-left: 0.375em;
     fill: var(--color-primary-500);
   }
+}
+
+ul.dropdown {
+  @include shadow;
+  position: absolute;
+  z-index: 1;
+  top: 4rem;
+  right: 0;
+  width: 28rem;
+  font-size: 1.4rem;
+
+  background-color: #fff;
+
+  & li {
+    padding: 0.2rem 1rem;
+    cursor: pointer;
+    border: 3px solid transparent;
+
+    &:hover {
+      background-color: var(--color-primary-100);
+    }
+    &:focus {
+      border-color: $color-focused;
+    }
+  }
+}
+.content {
+  max-height: 24rem;
+  overflow-y: scroll;
+  overflow-x: visible;
+  scrollbar-width: thin;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: none;
+  padding: 1rem;
+  font-size: 1.2rem;
+
+  background-color: #fff;
+  border-bottom: 1px solid $color-border-light;
+
+  & svg {
+    height: 1.5em;
+    width: 1.5em;
+    margin-right: 0.5em;
+    fill: $color-primary-500;
+  }
+}
+
+.versionName {
+  color: $color-text-dark;
+}
+
+.versionAbbrev {
+  font-size: 1rem;
+  color: $color-text-light;
+  vertical-align: super;
+  // font-weight: bold;
 }
