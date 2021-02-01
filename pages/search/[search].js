@@ -7,7 +7,7 @@ const SearchResult = (props) => {
   const verses = result?.verses;
   const searchQuery = props.searchQuery;
   const queryVersionId = searchQuery.version;
-  console.log(result)
+
   // pagination
   const totalPages = Math.ceil(result?.total / result?.limit)
   const currentPage = Math.ceil(result?.offset / result?.limit) + 1;
