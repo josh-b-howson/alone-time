@@ -1,6 +1,7 @@
 .read {
-  font-size: medium;
+  font-size: 1.7rem;
   -webkit-font-smoothing: antialiased;
+  font-family: 'Crimson Text', serif;
 }
 .read html,
 .read body,
@@ -176,7 +177,7 @@
   content: ")" !important;
 }
 .read .x {
-  font-size: 16px;
+  font-size: 1.6em;
   box-sizing: border-box;
   display: inline-block;
   position: relative;
@@ -218,7 +219,7 @@
   content: "\a0";
 }
 .read .f {
-  font-size: 16px;
+  font-size: 1.6em;
   display: inline-block;
   box-sizing: border-box;
   padding: 0 0.4em;
@@ -262,10 +263,10 @@
 .read [class^="is"] {
   text-align: center;
   font-weight: bold;
-  font-size: 27px;
-  line-height: 50px;
-  margin-top: 25px;
-  margin-bottom: 25px;
+  font-size: 2.7em;
+  line-height: 2em;
+  margin-top: 2.5em;
+  margin-bottom: 2.5em;
 }
 .read [class^="ip"] {
   text-indent: 1em;
@@ -316,10 +317,10 @@
 }
 .read .iot {
   font-weight: bold;
-  font-size: 18px;
-  line-height: 25px;
-  margin-top: 25px;
-  margin-bottom: 0px;
+  font-size: 1.8em;
+  line-height: 1.8em;
+  margin-top: 1.8em;
+  margin-bottom: 0;
 }
 .read .io,
 .read .io1 {
@@ -353,6 +354,9 @@
 }
 .read .m {
   text-indent: 0 !important;
+}
+.read .p:not(:last-child) {
+  margin-bottom:1rem;
 }
 .read .pmo {
   text-indent: 0;
@@ -417,14 +421,14 @@
   margin-right: 0em;
 }
 .read .b {
-  height: 25px;
+  height: 2.5em;
 }
 .read [class^="q"] {
   padding-left: 1em;
   text-indent: -1em;
   margin-left: 1em;
   margin-right: 0em;
-  display:block;
+  display: block;
 }
 .read .q2 {
   margin-left: 1.5em;
@@ -550,14 +554,14 @@
 }
 .read [class^="thr"] {
   text-align: right;
-  padding: 0 25px;
+  padding: 0 2.5em;
 }
 .read [class^="tc"] {
   display: table-cell;
 }
 .read [class^="tcr"] {
   text-align: right;
-  padding: 0 25px;
+  padding: 0 2.5em;
 }
 .read [class^="mt"] {
   text-align: center;
@@ -567,14 +571,14 @@
 .read .mt,
 .read .mt1,
 .read .mt2 {
-  font-size: 40px;
-  line-height: 50px;
-  margin-top: 25px;
-  margin-bottom: 25px;
+  font-size: 4em;
+  line-height: 5em;
+  margin-top: 2.5em;
+  margin-bottom: 2.5em;
 }
 .read .mt2 {
-  font-size: 34px;
-  margin-top: -25px;
+  font-size: 3.4em;
+  margin-top: -2.5em;
   font-style: italic;
   font-weight: normal;
 }
@@ -585,14 +589,14 @@
 .read .ms3 {
   text-align: center;
   font-weight: bold;
-  font-size: 27px;
-  line-height: 50px;
-  margin-top: 25px;
-  margin-bottom: 0px;
+  font-size: 2.7em;
+  line-height: 5em;
+  margin-top: 2.5em;
+  margin-bottom: 0;
 }
 .read .mr {
   font-size: 0.9em;
-  margin-bottom: 25px;
+  margin-bottom: 2.5em;
   text-align: center;
   font-weight: normal;
   font-style: italic;
@@ -606,9 +610,9 @@
   font-weight: bold;
   font-style: italic;
   font-size: inherit;
-  line-height: 50px;
-  margin-bottom: 25px;
-  margin-top: 0px;
+  line-height: 5em;
+  margin-bottom: 2.5em;
+  margin-top: 0;
 }
 .read .sr {
   font-weight: normal;
@@ -618,7 +622,7 @@
   letter-spacing: normal;
 }
 .read .r {
-  font-size: 18px;
+  font-size: 1.8em;
   font-weight: normal;
   font-style: italic;
   text-align: center;
@@ -626,7 +630,7 @@
 }
 .read .rq {
   font-size: inherit;
-  line-height: 25px;
+  line-height: 2.5em;
   font-style: italic;
   text-align: right;
   letter-spacing: normal;
