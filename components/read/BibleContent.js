@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 
 const BibleContent = (props) => {
   const content = props.content;
-  console.log(props)
 
   const ContentTag = (props) => {
     const item = props.item;

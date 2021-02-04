@@ -62,7 +62,6 @@ const Dropdown = (props) => {
           });
       }
       recursiveScrollAllChildrenToTop(ddContent.current);
-      // console.log(ddContent.current.childNodes);
     }
     // cleanup on unmount
     return () => {
