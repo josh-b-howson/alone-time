@@ -16,16 +16,16 @@ const BibleContent = (props) => {
             <ContentFromJson {...{ item }} key={index} />
           )}
           <style jsx>{`
-        .drop-cap {
-          float:left;
+            .drop-cap {
+              float:left;
 
-          font-size:4.8rem;
-          line-height:1;
-          text-indent:0;
-          padding-right:.5rem;
-          font-style:normal;
-        }
-      `}</style>
+              font-size:4.8rem;
+              line-height:1;
+              text-indent:0;
+              padding-right:.5rem;
+              font-style:normal;
+            }
+          `}</style>
         </p>
       )
       default: return null;

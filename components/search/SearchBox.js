@@ -1,20 +1,24 @@
 import styles from './SearchBox.module.scss';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useSelector } from 'react-redux';
 
 const SearchBox = () => {
   const router = useRouter();
-  const [searchQuery, setSearchQuery] = useState('')
+  const [searchQuery, setSearchQuery] = useState()
   const versionId = useSelector(state => state.version.version);
-  const showVersion = () => alert(`${versionId}, ${searchQuery}`);
 
+  // update the searchQuery state on each keystroke
   const handleChange = (e) => {
     setSearchQuery(e.target.value);
   }
 
+  // use the searchQuery state to execute the search
   const handleSubmit = (e) => {
+    if (!searchQuery) return false;
+    // prevent default form action
     e.preventDefault();
+    // route to the search page with necessary url params
     router.push({
       pathname: 'search/[search]',
       query: {
@@ -24,10 +28,29 @@ const SearchBox = () => {
     });
   }
 
+  const search = useRef();
+  useEffect(() => {
+    let searchBoxEmptyMessage = "You need to enter a search query first!";
+    search.current.oninvalid = e => {
+      e.target.setCustomValidity(searchBoxEmptyMessage);
+    };
+  })
+
   return (
     <form className={styles.searchBox} onSubmit={handleSubmit}>
-      <div className={`${styles.input__wrap} input__wrap`}><input className={styles.input} type="text" onChange={handleChange} placeholder="Search" /></div>
-      <input className={`${styles.submit} btn btn--primary`} type="submit" value="Search" />
+      <div className={`${styles.input__wrap} input__wrap`}>
+        <input
+          ref={search}
+          className={styles.input}
+          type="text"
+          onChange={handleChange}
+          placeholder="Search"
+          required />
+      </div>
+      <input
+        className={`${styles.submit} btn btn--primary`}
+        type="submit"
+        value="Search" />
     </form>
   )
 }
