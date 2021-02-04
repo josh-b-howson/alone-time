@@ -43,8 +43,10 @@ const VersionSelect = props => {
 
   // update the redux state on first load & when versionId changes
   useEffect(() => {
-    // update version state with redux id if set, otherwise use cookie
-    updateCurrentVersion(versionIdFromRedux ? versionIdFromRedux : props.versionIdFromCookie)
+    updateCurrentVersion(versionIdFromRedux
+      // update version state with redux id if set, otherwise use cookie
+      //  ? versionIdFromRedux : props.versionIdFromCookie
+    )
   }, [versionIdFromRedux]);
 
   // fetch list of versions from API, add to version list state
@@ -71,8 +73,8 @@ const VersionSelect = props => {
   useEffect(() => {
     populateVersions();
     // if redux version is not set, update the current version with cookie value
-    if (!versionIdFromRedux && props.versionIdFromCookie)
-      updateCurrentVersion(props.versionIdFromCookie);
+    // if (!versionIdFromRedux && props.versionIdFromCookie)
+    //   updateCurrentVersion(props.versionIdFromCookie);
   }, [])
 
   const setCurrentVersionId = (versionId) => {
