@@ -8,7 +8,8 @@ import { getAllBooks } from '../utils/bibleConnector';
  * /books?version=${currentVersionId}
  */
 const Books = (props) => {
-  const currentVersionId = useSelector(state => state.version?.version);
+  // links should use the version passed in as url param, since that doesn't change
+  const queryVersionId = props.query.version;
   const books = props.books;
   return (
     <Layout {...props} title="Books List">
@@ -17,7 +18,7 @@ const Books = (props) => {
         {books.map(book =>
           <LinkItem
             key={book.id}
-            href={`/book/${book.id}?version=${currentVersionId}`}>
+            href={`/book/${book.id}?version=${queryVersionId}`}>
             {book.name}
             <SVG svgId="arrow-right" className="icon" />
           </LinkItem>
@@ -32,7 +33,8 @@ const Books = (props) => {
 }
 
 export async function getServerSideProps(ctx) {
-  const version = ctx.query.version;
+  const query = ctx.query;
+  const version = query.version;
 
   // Make server-side API call
   const res = await getAllBooks(version)
@@ -43,6 +45,7 @@ export async function getServerSideProps(ctx) {
   return {
     props: {
       books: res,
+      query: query,
     }
   }
 }

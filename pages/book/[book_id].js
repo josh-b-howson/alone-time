@@ -4,7 +4,7 @@ import { Layout, LinkItem, LinkList } from "../../components/layout-components";
 import { getBookById } from "../../utils/bibleConnector";
 
 const Book = (props) => {
-  const currentVersionId = useSelector(state => state.version?.version);
+  const queryVersionId = props.query.version;
   const book = props.book;
   return (
     <Layout {...props} title={book.name}>
@@ -13,7 +13,7 @@ const Book = (props) => {
         {book?.chapters.map(chapter =>
           <LinkItem
             key={chapter.name + chapter.number}
-            href={`/chapter/${chapter.id}?version=${currentVersionId}`}>
+            href={`/chapter/${chapter.id}?version=${queryVersionId}`}>
             {chapter.number}
           </LinkItem>
         )}
@@ -26,6 +26,7 @@ const Book = (props) => {
 }
 
 export async function getServerSideProps(ctx) {
+  const query = ctx.query;
   const version = ctx.query.version;
   const bookId = ctx.query.book_id;
 
@@ -33,7 +34,7 @@ export async function getServerSideProps(ctx) {
     .then(res => res.json())
     .then(json => json.data)
     .catch(res => console.error(`An error ocurred in getBookById(). ${res.error}`));
-  return { props: { book } };
+  return { props: { book: book, query: query } };
 }
 
 export default Book;
