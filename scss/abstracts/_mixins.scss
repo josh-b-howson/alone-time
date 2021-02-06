@@ -42,3 +42,16 @@
     @content;
   }
 }
+
+/* @include inside a <ul> or <ol> to remove the default look */
+@mixin unstyledList {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* @include inside an <a> to make it act like plain text */
+@mixin unstyledLink {
+  text-decoration: none;
+  color: inherit;
+}

@@ -1,0 +1,30 @@
+@import "../../scss/abstracts/variables";
+@import "../../scss/abstracts/mixins";
+
+.item {
+  & a {
+    @include unstyledLink;
+
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+
+    line-height: 4rem;
+    /* The border should NOT touch the left edge */
+    margin-left: 1rem;
+    /* The border SHOULD touch the right edge */
+    padding-right: 1rem;
+  }
+
+  &:focus,
+  &:focus-within {
+    @include focusShadow;
+  }
+
+  &:not(:last-child) {
+    & a {
+      border-bottom: 1px solid $color-border-light;
+    }
+  }
+}

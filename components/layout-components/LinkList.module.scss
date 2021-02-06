@@ -1,0 +1,9 @@
+@import "../../scss/abstracts/variables";
+@import "../../scss/abstracts/mixins";
+
+.list {
+  @include unstyledList;
+
+  color: $color-text-dark;
+  background-color: #fff;
+}

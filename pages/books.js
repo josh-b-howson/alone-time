@@ -1,6 +1,6 @@
-import Link from 'next/link';
 import { useSelector } from 'react-redux';
-import { Layout } from '../components/layout-components';
+import { Layout, LinkItem, LinkList } from '../components/layout-components';
+import { SVG } from '../components/svg';
 import { getAllBooks } from '../utils/bibleConnector';
 
 /**
@@ -13,11 +13,25 @@ const Books = (props) => {
   return (
     <Layout {...props} title="Books List">
       <h1>Books</h1>
+      <LinkList className="book-list">
+        {books.map(book =>
+          <LinkItem
+            key={book.id}
+            href={`/book/${book.id}?version=${currentVersionId}`}>
+            {book.name}
+            <SVG className="icon"><path d="M20 56l24-24L20 8" fill='none' stroke-width="8" stroke-miterlimit="4" /></SVG>
+          </LinkItem>
+        )}
+      </LinkList>
       <ul>
-        {books.map(book => {
-          return <li key={book.id}>{book.name} <Link href={`/book/${book.id}?version=${currentVersionId}`}><a>View</a></Link></li>
-        })}
       </ul>
+      <style jsx>{`
+        
+      `}</style>
+      <style global jsx>{`
+        .book-list {max-width:24rem}
+        .book-list .icon {height:1.8rem; width:1.8rem; stroke:var(--color-primary-700)}
+      `}</style>
     </Layout>
   )
 }
