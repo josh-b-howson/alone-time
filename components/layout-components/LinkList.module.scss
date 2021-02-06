@@ -1,9 +1,21 @@
 @import "../../scss/abstracts/variables";
 @import "../../scss/abstracts/mixins";
 
-.list {
+.stacked {
+  background-color: #fff;
+}
+
+.wrapped {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  gap: 1rem;
+}
+
+.stacked,
+.wrapped {
   @include unstyledList;
 
   color: $color-text-dark;
-  background-color: #fff;
 }

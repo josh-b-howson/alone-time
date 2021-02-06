@@ -1,4 +1,3 @@
-import { useSelector } from 'react-redux';
 import { Layout, LinkItem, LinkList } from '../components/layout-components';
 import { SVG } from '../components/svg';
 import { getAllBooks } from '../utils/bibleConnector';
@@ -8,7 +7,7 @@ import { getAllBooks } from '../utils/bibleConnector';
  * /books?version=${currentVersionId}
  */
 const Books = (props) => {
-  // links should use the version passed in as url param, since that doesn't change
+  // links use the version passed in as url param, since that doesn't change
   const queryVersionId = props.query.version;
   const books = props.books;
   return (

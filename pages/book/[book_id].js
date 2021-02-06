@@ -1,25 +1,30 @@
-import Link from "next/link";
-import { useSelector } from "react-redux";
 import { Layout, LinkItem, LinkList } from "../../components/layout-components";
 import { getBookById } from "../../utils/bibleConnector";
 
 const Book = (props) => {
   const queryVersionId = props.query.version;
   const book = props.book;
+  // chapter label shows normally if it's a number, else truncates to prevent overflowing its container
+  const getChapterLabel = (chapter) => isNaN(chapter.number)
+    ? chapter.number.substring(0, 3)
+    : chapter.number;
   return (
     <Layout {...props} title={book.name}>
       <h1>{book.name}</h1>
-      <LinkList className="chapter-list">
+      <h4>Chapters</h4>
+      <LinkList
+        className="chapter-list"
+        display="wrapped">
         {book?.chapters.map(chapter =>
           <LinkItem
-            key={chapter.name + chapter.number}
+            key={chapter.id}
             href={`/chapter/${chapter.id}?version=${queryVersionId}`}>
-            {chapter.number}
+            {getChapterLabel(chapter)}
           </LinkItem>
         )}
       </LinkList>
       <style global jsx>{`
-        .chapter-list {max-width:16rem}
+        .chapter-list {text-transform:uppercase}
       `}</style>
     </Layout>
   )

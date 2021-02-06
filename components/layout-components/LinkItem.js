@@ -7,7 +7,7 @@ import Link from 'next/link';
  */
 const LinkItem = (props) => {
   const className = [
-    styles.item,
+    styles[props.display],
     props.className
   ].filter(i => !!i).join(' ');
 

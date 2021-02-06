@@ -11,7 +11,6 @@ import Error from "next/error";
 const Chapter = (props) => {
   const chapter = props.chapter;
   if (!chapter) return <Error statusCode={404} />;
-  console.log(chapter);
   const reference = chapter.reference;
   const content = chapter.content;
   // The reference format varies by version and is hard to string manipulate. 

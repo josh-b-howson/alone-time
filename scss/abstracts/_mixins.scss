@@ -54,4 +54,5 @@
 @mixin unstyledLink {
   text-decoration: none;
   color: inherit;
+  cursor: text;
 }

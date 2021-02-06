@@ -1,7 +1,7 @@
 @import "../../scss/abstracts/variables";
 @import "../../scss/abstracts/mixins";
 
-.item {
+.stacked {
   word-wrap: anywhere;
   & a {
     @include unstyledLink;
@@ -19,16 +19,38 @@
     margin-left: 1rem;
     /* The border SHOULD touch the right edge */
     padding-right: 1rem;
-  }
 
-  &:focus,
-  &:focus-within {
-    @include focusShadow;
+    cursor: pointer;
   }
 
   &:not(:last-child) {
     & a {
       border-bottom: 1px solid $color-border-light;
     }
+  }
+}
+
+.wrapped {
+  height: 4rem;
+  flex-basis: 4rem;
+  & a {
+    @include unstyledLink;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+
+    background-color: #fff;
+    cursor: pointer;
+  }
+}
+
+.stacked,
+.wrapped {
+  &:focus,
+  &:focus-within {
+    @include focusShadow;
   }
 }
