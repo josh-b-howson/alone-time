@@ -1,0 +1,14 @@
+@import "../../scss/abstracts/variables";
+
+small.copy {
+  /* Block display allows line height to be smaller than font size */
+  display: block;
+  margin-top: 6rem;
+  margin-bottom: 2rem;
+
+  font-size: 1rem;
+  text-align: center;
+  color: $color-text-light;
+  line-height: 1.4;
+  font-family: $font-family-sans;
+}

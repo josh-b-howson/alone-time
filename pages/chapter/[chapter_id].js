@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Layout } from "../../components/layout-components";
-import { BibleContent } from "../../components/read";
+import { BibleContent, BibleCopyright } from "../../components/read";
 import { getChapter } from "../../utils/bibleConnector";
 import Error from "next/error";
 
@@ -11,9 +11,13 @@ import Error from "next/error";
 const Chapter = (props) => {
   const chapter = props.chapter;
   if (!chapter) return <Error statusCode={404} />;
+  console.log(chapter);
   const reference = chapter.reference;
   const content = chapter.content;
-  const [chapterName, chapterNumber] = reference.split(' ');
+  // The reference format varies by version and is hard to string manipulate. 
+  // Eventually it would be nice to query the DB and add just the chapter name.
+  const chapterName = reference;
+  const chapterNumber = chapter.number;
   const versionIdFromQuery = props.query.version;
   return <Layout {...props} title={`Read ${reference}`}>
     <h1>{chapterName}</h1>
@@ -32,6 +36,7 @@ const Chapter = (props) => {
         href={`/chapter/${chapter.next.id}?version=${versionIdFromQuery}`}>
         <a>Next Chapter</a>
       </Link>}
+    {chapter.copyright && <BibleCopyright copyright={chapter.copyright} />}
   </Layout>
 }
 
