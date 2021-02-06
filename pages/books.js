@@ -19,7 +19,7 @@ const Books = (props) => {
             key={book.id}
             href={`/book/${book.id}?version=${currentVersionId}`}>
             {book.name}
-            <SVG className="icon"><path d="M20 56l24-24L20 8" fill='none' strokeWidth="8" strokeMiterlimit="4" /></SVG>
+            <SVG svgId="arrow-right" className="icon" />
           </LinkItem>
         )}
       </LinkList>
