@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useSelector } from "react-redux";
-import { Layout } from "../../components/layout-components";
+import { Layout, LinkItem, LinkList } from "../../components/layout-components";
 import { getBookById } from "../../utils/bibleConnector";
 
 const Book = (props) => {
@@ -9,11 +9,18 @@ const Book = (props) => {
   return (
     <Layout {...props} title={book.name}>
       <h1>{book.name}</h1>
-      <ul>
-        {book?.chapters.map(chapter => {
-          return <li key={chapter.name + chapter.number}><Link href={`/chapter/${chapter.id}?version=${currentVersionId}`}><a>{chapter.number}</a></Link></li>
-        })}
-      </ul>
+      <LinkList className="chapter-list">
+        {book?.chapters.map(chapter =>
+          <LinkItem
+            key={chapter.name + chapter.number}
+            href={`/chapter/${chapter.id}?version=${currentVersionId}`}>
+            {chapter.number}
+          </LinkItem>
+        )}
+      </LinkList>
+      <style global jsx>{`
+        .chapter-list {max-width:16rem}
+      `}</style>
     </Layout>
   )
 }

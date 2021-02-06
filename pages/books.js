@@ -23,11 +23,6 @@ const Books = (props) => {
           </LinkItem>
         )}
       </LinkList>
-      <ul>
-      </ul>
-      <style jsx>{`
-        
-      `}</style>
       <style global jsx>{`
         .book-list {max-width:24rem}
         .book-list .icon {height:1.8rem; width:1.8rem; stroke:var(--color-primary-700)}
