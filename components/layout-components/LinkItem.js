@@ -15,7 +15,7 @@ const LinkItem = (props) => {
     <li className={className}>
       <Link href={props.href}>
         <a>
-          {props.children}
+          <span>{props.children}</span>
         </a>
       </Link>
     </li>
