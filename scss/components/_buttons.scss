@@ -28,11 +28,10 @@ $color-text-btn: #444;
   height: 4rem;
   line-height: 1;
   padding: 0.3rem 1.6rem;
-
   color: $color-text-btn;
   background-color: #fff;
   border: none;
   border-radius: $border-radius-small;
-
+  -webkit-appearance: none;
   cursor: pointer;
 }

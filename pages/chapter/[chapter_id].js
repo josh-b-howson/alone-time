@@ -19,23 +19,42 @@ const Chapter = (props) => {
   const chapterNumber = chapter.number;
   const versionIdFromQuery = props.query.version;
   return <Layout {...props} title={`Read ${reference}`}>
+    <Link href={`/book/${chapter.bookId}?version=${versionIdFromQuery}`}><a className="chapters">&larr; Chapters</a></Link>
     <h1>{chapterName}</h1>
     <main className="read">
       <BibleContent
         content={content}
         chapterNumber={chapterNumber} />
     </main>
-    {chapter.previous &&
-      <Link
-        href={`/chapter/${chapter.previous.id}?version=${versionIdFromQuery}`}>
-        <a>Previous Chapter</a>
-      </Link>}
-    {chapter.next &&
-      <Link
-        href={`/chapter/${chapter.next.id}?version=${versionIdFromQuery}`}>
-        <a>Next Chapter</a>
-      </Link>}
-    {chapter.copyright && <BibleCopyright copyright={chapter.copyright} />}
+    <nav
+      className="chapter-nav">
+      {chapter.previous &&
+        <Link
+          href={`/chapter/${chapter.previous.id}?version=${versionIdFromQuery}`}>
+          <a>&larr;&nbsp;&nbsp;Previous</a>
+        </Link>}
+      {chapter.next &&
+        <Link
+          href={`/chapter/${chapter.next.id}?version=${versionIdFromQuery}`}>
+          <a>Next&nbsp;&nbsp;&rarr;</a>
+        </Link>}
+    </nav>
+    {chapter.copyright
+      && <BibleCopyright
+        copyright={chapter.copyright} />
+    }
+    <style jsx>{`
+      .chapters {
+        margin-block: 1em;
+      }
+      .chapter-nav {
+        display: flex;
+        gap: 2rem;
+        justify-content: center;
+        flex-wrap: row wrap;
+        margin-top: 6rem;
+      }
+    `}</style>
   </Layout>
 }
 

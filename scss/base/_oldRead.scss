@@ -1,0 +1,652 @@
+.read {
+  font-size: 1.7rem;
+  -webkit-font-smoothing: antialiased;
+  font-family: $font-family-serif;
+}
+.read html,
+.read body,
+.read div,
+.read span,
+.read applet,
+.read object,
+.read iframe,
+.read h1,
+.read h2,
+.read h3,
+.read h4,
+.read h5,
+.read h6,
+.read p,
+.read blockquote,
+.read pre,
+.read a,
+.read abbr,
+.read acronym,
+.read address,
+.read big,
+.read cite,
+.read code,
+.read del,
+.read dfn,
+.read em,
+.read img,
+.read ins,
+.read kbd,
+.read q,
+.read s,
+.read samp,
+.read small,
+.read strike,
+.read strong,
+.read sub,
+.read sup,
+.read tt,
+.read var,
+.read b,
+.read u,
+.read i,
+.read center,
+.read dl,
+.read dt,
+.read dd,
+.read ol,
+.read ul,
+.read li,
+.read fieldset,
+.read form,
+.read label,
+.read legend,
+.read table,
+.read caption,
+.read tbody,
+.read tfoot,
+.read thead,
+.read tr,
+.read th,
+.read td,
+.read article,
+.read aside,
+.read canvas,
+.read details,
+.read embed,
+.read figure,
+.read figcaption,
+.read footer,
+.read header,
+.read hgroup,
+.read menu,
+.read nav,
+.read output,
+.read ruby,
+.read section,
+.read summary,
+.read time,
+.read mark,
+.read audio,
+.read video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-family: inherit;
+  vertical-align: baseline;
+}
+.read article,
+.read aside,
+.read details,
+.read figcaption,
+.read figure,
+.read footer,
+.read header,
+.read hgroup,
+.read menu,
+.read nav,
+.read section {
+  display: block;
+}
+.read ol,
+.read ul {
+  list-style: none;
+}
+.read blockquote,
+.read q {
+  quotes: none;
+}
+.read blockquote:before,
+.read blockquote:after,
+.read q:before,
+.read q:after {
+  content: "";
+  content: none;
+}
+.read table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+.read .c {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.3em;
+}
+.read .ca {
+  font-style: italic;
+  font-weight: normal;
+  color: #777;
+}
+.read .ca:before {
+  content: "(";
+}
+.read .ca:after {
+  content: ")" !important;
+}
+.read .cl {
+  text-align: center;
+  font-weight: bold;
+}
+.read .cd {
+  margin-left: 1em;
+  margin-right: 1em;
+  font-style: italic;
+}
+.read .v,
+.read .vp,
+.read sup[class^="v"] {
+  color: #000;
+  font-size: 0.7em;
+  letter-spacing: -0.03em;
+  vertical-align: 0.25em;
+  line-height: 0;
+  font-family: sans-serif;
+  font-weight: bold;
+  top: inherit;
+}
+.read .v:after,
+.read .vp:after,
+.read sup[class^="v"]:after {
+  content: "\a0";
+}
+.read sup + sup:before {
+  content: "\a0";
+}
+.read .va {
+  font-style: italic;
+}
+.read .va:before {
+  content: "(";
+}
+.read .va:after {
+  content: ")" !important;
+}
+.read .x {
+  font-size: 1.6em;
+  box-sizing: border-box;
+  display: inline-block;
+  position: relative;
+  padding: 0 0.4em;
+  margin: 0 0.1em;
+  text-indent: 0;
+  text-align: left;
+  border-radius: 4px;
+  border: 1px solid #dcdcdc;
+}
+.read .xo {
+  font-weight: bold;
+}
+.read .xk {
+  font-style: italic;
+}
+.read .xq {
+  font-style: italic;
+}
+.read .notelink {
+  text-decoration: underline;
+  padding: 0.1em;
+}
+.read .notelink,
+.read .notelink:hover,
+.read .notelink:active,
+.read .notelink:visited {
+  color: #6a6a6a;
+}
+.read .notelink sup {
+  font-size: 0.7em;
+  letter-spacing: -0.03em;
+  vertical-align: 0.25em;
+  line-height: 0;
+  font-family: sans-serif;
+  font-weight: bold;
+}
+.read .notelink + sup:before {
+  content: "\a0";
+}
+.read .f {
+  font-size: 1.6em;
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 0 0.4em;
+  margin: 0 0.1em;
+  text-indent: 0;
+  text-align: left;
+  border-radius: 4px;
+  border: 1px solid #dcdcdc;
+}
+.read .fr {
+  font-weight: bold;
+}
+.read .fk {
+  font-style: italic;
+  font-variant: small-caps;
+}
+.read [class^="fq"] {
+  font-style: italic;
+}
+.read .fl {
+  font-style: italic;
+  font-weight: bold;
+}
+.read .fv {
+  color: #515151;
+  font-size: 0.75em;
+  letter-spacing: -0.03em;
+  vertical-align: 0.25em;
+  line-height: 0;
+  font-family: sans-serif;
+  font-weight: bold;
+}
+.read .fv:after {
+  content: "\a0";
+}
+.read .h {
+  text-align: center;
+  font-style: italic;
+}
+.read [class^="imt"],
+.read [class^="is"] {
+  text-align: center;
+  font-weight: bold;
+  font-size: 2.7em;
+  line-height: 2em;
+  margin-top: 2.5em;
+  margin-bottom: 2.5em;
+}
+.read [class^="ip"] {
+  text-indent: 1em;
+}
+.read .ipi {
+  padding-left: 1em;
+  padding-right: 1em;
+}
+.read .im {
+  text-indent: 0;
+}
+.read .imi {
+  text-indent: 0;
+  margin-left: 1em;
+  margin-right: 1em;
+}
+.read .ipq {
+  font-style: italic;
+  margin-left: 1em;
+  margin-right: 1em;
+}
+.read .imq {
+  margin-left: 1em;
+  margin-right: 1em;
+}
+.read .ipr {
+  text-align: right;
+  text-indent: 0;
+}
+.read [class^="iq"] {
+  margin-left: 1em;
+  margin-right: 1em;
+}
+.read .iq2 {
+  text-indent: 1em;
+}
+.read [class^="ili"] {
+  padding-left: 1em;
+  text-indent: -1em;
+}
+.read .ili1 {
+  margin-left: 1em;
+  margin-right: 1em;
+}
+.read .ili2 {
+  margin-left: 2em;
+  margin-right: 1em;
+}
+.read .iot {
+  font-weight: bold;
+  font-size: 1.8em;
+  line-height: 1.8em;
+  margin-top: 1.8em;
+  margin-bottom: 0;
+}
+.read .io,
+.read .io1 {
+  margin-left: 1em;
+  margin-right: 0em;
+}
+.read .io2 {
+  margin-left: 2em;
+  margin-right: 0em;
+}
+.read .io3 {
+  margin-left: 3em;
+  margin-right: 0em;
+}
+.read .io4 {
+  margin-left: 4em;
+  margin-right: 0em;
+}
+.read .ior {
+  font-style: italic;
+}
+.read .iex {
+  text-indent: 1em;
+}
+.read .iqt {
+  text-indent: 1em;
+  font-style: italic;
+}
+.read [class^="p"] {
+  text-indent: 1em;
+}
+.read .m {
+  text-indent: 0 !important;
+}
+.read .p:not(:last-child) {
+  margin-bottom:1rem;
+}
+.read .pmo {
+  text-indent: 0;
+  margin-left: 1em;
+  margin-right: 0em;
+}
+.read .pm {
+  margin-left: 1em;
+  margin-right: 0em;
+}
+.read .pmr {
+  text-align: right;
+}
+.read .pmc {
+  margin-left: 1em;
+  margin-right: 0em;
+}
+.read .pi {
+  margin-left: 1em;
+  margin-right: 0em;
+}
+.read .pi1 {
+  margin-left: 2em;
+  margin-right: 0em;
+}
+.read .pi2 {
+  margin-left: 3em;
+  margin-right: 0em;
+}
+.read .pi3 {
+  margin-left: 4em;
+  margin-right: 0em;
+}
+.read .mi {
+  margin-left: 1em;
+  margin-right: 0em;
+  text-indent: 0;
+}
+.read .pc {
+  text-align: center;
+  text-indent: 0;
+}
+.read .cls {
+  text-align: right;
+}
+.read [class^="li"] {
+  padding-left: 1em;
+  text-indent: -1em;
+  margin-left: 1em;
+  margin-right: 0em;
+}
+.read .li2 {
+  margin-left: 2em;
+  margin-right: 0em;
+}
+.read .li3 {
+  margin-left: 3em;
+  margin-right: 0em;
+}
+.read .li4 {
+  margin-left: 4em;
+  margin-right: 0em;
+}
+.read .b {
+  height: 2.5em;
+}
+.read [class^="q"] {
+  padding-left: 1em;
+  text-indent: -1em;
+  margin-left: 1em;
+  margin-right: 0em;
+  display: block;
+}
+.read .q2 {
+  margin-left: 1.5em;
+  margin-right: 0em;
+}
+.read .q3 {
+  margin-left: 2em;
+  margin-right: 0em;
+}
+.read .q4 {
+  margin-left: 2.5em;
+  margin-right: 0em;
+}
+.read .qr {
+  text-align: right;
+  font-style: italic;
+}
+.read .qc {
+  text-align: center;
+}
+.read .qs {
+  font-style: italic;
+  text-align: right;
+}
+.read .qa {
+  text-align: center;
+  font-style: italic;
+  font-size: 1.1em;
+  margin-left: 0em;
+  margin-right: 0em;
+}
+.read .qac {
+  margin-left: 0em;
+  margin-right: 0em;
+  padding: 0;
+  text-indent: 0;
+  font-style: italic;
+}
+.read .qm2 {
+  margin-left: 1.5em;
+  margin-right: 0em;
+}
+.read .qm3 {
+  margin-left: 2em;
+  margin-right: 0em;
+}
+.read .qt {
+  font-style: italic;
+  text-indent: 0;
+  padding: 0;
+  margin: 0;
+}
+.read .bk {
+  font-style: italic;
+}
+.read .nd {
+  font-variant: small-caps;
+}
+.read .add {
+  font-style: italic;
+}
+.read .dc {
+  font-style: italic;
+}
+.read .k {
+  font-weight: bold;
+  font-style: italic;
+}
+.read .lit {
+  text-align: right;
+  font-weight: bold;
+}
+.read .pn {
+  font-weight: bold;
+  text-decoration: underline;
+}
+.read .sls {
+  font-style: italic;
+}
+.read .tl {
+  font-style: italic;
+}
+.read .wj {
+  color: #cc0000;
+}
+.read .em {
+  font-style: italic;
+}
+.read .bd {
+  font-weight: bold;
+}
+.read .it {
+  font-style: italic;
+}
+.read .bdit {
+  font-weight: bold;
+  font-style: italic;
+}
+.read .no {
+  font-weight: normal;
+  font-style: normal;
+}
+.read .sc {
+  font-variant: small-caps;
+}
+.read .qt {
+  font-style: italic;
+}
+.read .sig {
+  font-weight: normal;
+  font-style: italic;
+}
+.read table {
+  width: 100%;
+  display: table;
+}
+.read .tr {
+  display: table-row;
+}
+.read [class^="th"] {
+  font-style: italic;
+  display: table-cell;
+}
+.read [class^="thr"] {
+  text-align: right;
+  padding: 0 2.5em;
+}
+.read [class^="tc"] {
+  display: table-cell;
+}
+.read [class^="tcr"] {
+  text-align: right;
+  padding: 0 2.5em;
+}
+.read [class^="mt"] {
+  text-align: center;
+  font-weight: bold;
+  letter-spacing: normal;
+}
+.read .mt,
+.read .mt1,
+.read .mt2 {
+  font-size: 4em;
+  line-height: 5em;
+  margin-top: 2.5em;
+  margin-bottom: 2.5em;
+}
+.read .mt2 {
+  font-size: 3.4em;
+  margin-top: -2.5em;
+  font-style: italic;
+  font-weight: normal;
+}
+.read [class^="ms"],
+.read .ms,
+.read .ms1,
+.read .ms2,
+.read .ms3 {
+  text-align: center;
+  font-weight: bold;
+  font-size: 2.7em;
+  line-height: 5em;
+  margin-top: 2.5em;
+  margin-bottom: 0;
+}
+.read .mr {
+  font-size: 0.9em;
+  margin-bottom: 2.5em;
+  text-align: center;
+  font-weight: normal;
+  font-style: italic;
+}
+.read .s,
+.read .s1,
+.read .s2,
+.read .s3,
+.read .s4 {
+  text-align: center;
+  font-weight: bold;
+  font-style: italic;
+  font-size: inherit;
+  line-height: 5em;
+  margin-bottom: 2.5em;
+  margin-top: 0;
+}
+.read .sr {
+  font-weight: normal;
+  font-style: italic;
+  text-align: center;
+  font-size: inherit;
+  letter-spacing: normal;
+}
+.read .r {
+  font-size: 1.8em;
+  font-weight: normal;
+  font-style: italic;
+  text-align: center;
+  letter-spacing: normal;
+}
+.read .rq {
+  font-size: inherit;
+  line-height: 2.5em;
+  font-style: italic;
+  text-align: right;
+  letter-spacing: normal;
+}
+.read .d {
+  font-style: italic;
+  text-align: center;
+  font-size: inherit;
+  letter-spacing: normal;
+}
+.read .sp {
+  text-align: left;
+  font-weight: normal;
+  font-style: italic;
+  font-size: inherit;
+  letter-spacing: normal;
+}
+
+/*# sourceMappingURL=read.css.map */

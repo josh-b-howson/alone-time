@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Layout, LinkItem, LinkList } from "../../components/layout-components";
 import { getBookById } from "../../utils/bibleConnector";
 
@@ -10,6 +11,7 @@ const Book = (props) => {
     : chapter.number;
   return (
     <Layout {...props} title={book.name}>
+      <Link href={`/books?version=${queryVersionId}`}><a className="books">&larr;&nbsp;Books</a></Link>
       <h1>{book.name}</h1>
       <h4>Chapters</h4>
       <LinkList
@@ -24,6 +26,7 @@ const Book = (props) => {
         )}
       </LinkList>
       <style global jsx>{`
+        .books {margin-block:1em}
         .chapter-list {text-transform:uppercase}
       `}</style>
     </Layout>

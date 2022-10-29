@@ -9,9 +9,10 @@
 
 .input__wrap {
   flex: 1;
+  position: relative;
+  right: -0.5rem;
 }
 
 .submit {
   position: relative;
-  left: -0.5rem;
 }

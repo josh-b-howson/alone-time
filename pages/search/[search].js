@@ -15,36 +15,57 @@ const SearchResult = (props) => {
   return (
     <Layout {...props} title={`Search for "${searchQuery.search}"`}>
       <h1>Results for "{searchQuery.search}"</h1>
-      <p>Results: {result?.total ? result?.total : 'none'}</p>
+      <p className="results">Results: {result?.total ? result?.total : 'none'}</p>
       {result?.total > 0 ?
         <>
-          <ul>
+          <ul className="results-list">
             {verses.map(verse => <li key={verse.id}>
-              <div>
-                {verse.reference}
-                <Link href={`/chapter/${verse.chapterId}?version=${queryVersionId}`}><a>Read Chapter</a></Link>
+              <div className="res-reference">
+                <h2>{verse.reference}</h2>
+                &nbsp;<Link href={`/chapter/${verse.chapterId}?version=${queryVersionId}`}><a className="read-chapter">Read Chapter&nbsp;&rarr;</a></Link>
               </div>
               <div>{verse.text}</div>
             </li>)}
           </ul>
           {/* <Link href={}></Link> */}
-          <ul>
+          <ul className="summary">
             <li>Total results: {result?.total}</li>
             <li>Result limit/page: {result?.limit}</li>
             <li>Result offset: {result?.offset}</li>
             <li>Page: {currentPage} of {totalPages}</li>
           </ul>
-          {currentPage > 1 &&
-            <Link href={`/search/${searchQuery.search}?version=${searchQuery.version}&page=${currentPage - 1}`}><a>Previous page</a></Link>
-          }
-          {currentPage < totalPages &&
-            <Link href={`/search/${searchQuery.search}?version=${searchQuery.version}&page=${currentPage + 1}`}><a>Next page</a></Link>
-          }
-          {currentPage > totalPages &&
-            <>You went too far! <Link href={`/search/${searchQuery.search}?version=${searchQuery.version}&page=${1}`}><a>Back to results</a></Link></>
-          }
+          <nav>
+            {currentPage > 1 &&
+              <Link href={`/search/${searchQuery.search}?version=${searchQuery.version}&page=${currentPage - 1}`}><a>Previous page</a></Link>
+            }
+            {currentPage < totalPages &&
+              <Link href={`/search/${searchQuery.search}?version=${searchQuery.version}&page=${currentPage + 1}`}><a>Next page</a></Link>
+            }
+            {currentPage > totalPages &&
+              <>You went too far! <Link href={`/search/${searchQuery.search}?version=${searchQuery.version}&page=${1}`}><a>Back to results</a></Link></>
+            }
+          </nav>
         </>
         : <div>No Results. Try a new search or switch to a different version.<br /> <Link href='/'><a>Back to home</a></Link></div>}
+      <style jsx>{`
+        .results {
+          margin-block:1em;
+        }
+        .results-list {
+          display: flex;
+          flex-flow: column nowrap;
+          gap: 1.5rem;
+        }
+        nav {
+          padding: 6rem 0;
+          display: flex;
+          gap: 2rem;
+          justify-content: center;
+        }
+        .summary {
+          margin-block: 1em;
+        }
+      `}</style>
     </Layout>
   )
 }

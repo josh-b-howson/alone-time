@@ -5,7 +5,8 @@ import { useSelector } from 'react-redux';
 
 const SearchBox = () => {
   const router = useRouter();
-  const [searchQuery, setSearchQuery] = useState()
+  const [searchQuery, setSearchQuery] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
   const versionId = useSelector(state => state.version.version);
 
   // update the searchQuery state on each keystroke
@@ -15,6 +16,7 @@ const SearchBox = () => {
 
   // use the searchQuery state to execute the search
   const handleSubmit = (e) => {
+    setIsLoading(true)
     if (!searchQuery) return false;
     // prevent default form action
     e.preventDefault();
@@ -32,9 +34,11 @@ const SearchBox = () => {
   useEffect(() => {
     let searchBoxEmptyMessage = "You need to enter a search query first!";
     search.current.oninvalid = e => {
+      console.log(e)
       e.target.setCustomValidity(searchBoxEmptyMessage);
+      setIsLoading(false)
     };
-  })
+  }, [])
 
   return (
     <form className={styles.searchBox} onSubmit={handleSubmit}>
@@ -50,7 +54,7 @@ const SearchBox = () => {
       <input
         className={`${styles.submit} btn btn--primary`}
         type="submit"
-        value="Search" />
+        value={isLoading ? "Loading..." : "Search"} />
     </form>
   )
 }

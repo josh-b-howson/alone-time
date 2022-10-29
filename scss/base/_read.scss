@@ -1,652 +1,287 @@
+/* The following styles are for the reading page.
+Every selector in this file should be prefixed with .read */
 .read {
-  font-size: 1.7rem;
-  -webkit-font-smoothing: antialiased;
-  font-family: $font-family-serif;
-}
-.read html,
-.read body,
-.read div,
-.read span,
-.read applet,
-.read object,
-.read iframe,
-.read h1,
-.read h2,
-.read h3,
-.read h4,
-.read h5,
-.read h6,
-.read p,
-.read blockquote,
-.read pre,
-.read a,
-.read abbr,
-.read acronym,
-.read address,
-.read big,
-.read cite,
-.read code,
-.read del,
-.read dfn,
-.read em,
-.read img,
-.read ins,
-.read kbd,
-.read q,
-.read s,
-.read samp,
-.read small,
-.read strike,
-.read strong,
-.read sub,
-.read sup,
-.read tt,
-.read var,
-.read b,
-.read u,
-.read i,
-.read center,
-.read dl,
-.read dt,
-.read dd,
-.read ol,
-.read ul,
-.read li,
-.read fieldset,
-.read form,
-.read label,
-.read legend,
-.read table,
-.read caption,
-.read tbody,
-.read tfoot,
-.read thead,
-.read tr,
-.read th,
-.read td,
-.read article,
-.read aside,
-.read canvas,
-.read details,
-.read embed,
-.read figure,
-.read figcaption,
-.read footer,
-.read header,
-.read hgroup,
-.read menu,
-.read nav,
-.read output,
-.read ruby,
-.read section,
-.read summary,
-.read time,
-.read mark,
-.read audio,
-.read video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-family: inherit;
-  vertical-align: baseline;
-}
-.read article,
-.read aside,
-.read details,
-.read figcaption,
-.read figure,
-.read footer,
-.read header,
-.read hgroup,
-.read menu,
-.read nav,
-.read section {
-  display: block;
-}
-.read ol,
-.read ul {
-  list-style: none;
-}
-.read blockquote,
-.read q {
-  quotes: none;
-}
-.read blockquote:before,
-.read blockquote:after,
-.read q:before,
-.read q:after {
-  content: "";
-  content: none;
-}
-.read table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-.read .c {
-  text-align: center;
-  font-weight: bold;
-  font-size: 1.3em;
-}
-.read .ca {
-  font-style: italic;
-  font-weight: normal;
-  color: #777;
-}
-.read .ca:before {
-  content: "(";
-}
-.read .ca:after {
-  content: ")" !important;
-}
-.read .cl {
-  text-align: center;
-  font-weight: bold;
-}
-.read .cd {
-  margin-left: 1em;
-  margin-right: 1em;
-  font-style: italic;
-}
-.read .v,
-.read .vp,
-.read sup[class^="v"] {
-  color: #000;
-  font-size: 0.7em;
-  letter-spacing: -0.03em;
-  vertical-align: 0.25em;
-  line-height: 0;
-  font-family: sans-serif;
-  font-weight: bold;
-  top: inherit;
-}
-.read .v:after,
-.read .vp:after,
-.read sup[class^="v"]:after {
-  content: "\a0";
-}
-.read sup + sup:before {
-  content: "\a0";
-}
-.read .va {
-  font-style: italic;
-}
-.read .va:before {
-  content: "(";
-}
-.read .va:after {
-  content: ")" !important;
-}
-.read .x {
-  font-size: 1.6em;
-  box-sizing: border-box;
-  display: inline-block;
-  position: relative;
-  padding: 0 0.4em;
-  margin: 0 0.1em;
-  text-indent: 0;
-  text-align: left;
-  border-radius: 4px;
-  border: 1px solid #dcdcdc;
-}
-.read .xo {
-  font-weight: bold;
-}
-.read .xk {
-  font-style: italic;
-}
-.read .xq {
-  font-style: italic;
-}
-.read .notelink {
-  text-decoration: underline;
-  padding: 0.1em;
-}
-.read .notelink,
-.read .notelink:hover,
-.read .notelink:active,
-.read .notelink:visited {
-  color: #6a6a6a;
-}
-.read .notelink sup {
-  font-size: 0.7em;
-  letter-spacing: -0.03em;
-  vertical-align: 0.25em;
-  line-height: 0;
-  font-family: sans-serif;
-  font-weight: bold;
-}
-.read .notelink + sup:before {
-  content: "\a0";
-}
-.read .f {
-  font-size: 1.6em;
-  display: inline-block;
-  box-sizing: border-box;
-  padding: 0 0.4em;
-  margin: 0 0.1em;
-  text-indent: 0;
-  text-align: left;
-  border-radius: 4px;
-  border: 1px solid #dcdcdc;
-}
-.read .fr {
-  font-weight: bold;
-}
-.read .fk {
-  font-style: italic;
-  font-variant: small-caps;
-}
-.read [class^="fq"] {
-  font-style: italic;
-}
-.read .fl {
-  font-style: italic;
-  font-weight: bold;
-}
-.read .fv {
-  color: #515151;
-  font-size: 0.75em;
-  letter-spacing: -0.03em;
-  vertical-align: 0.25em;
-  line-height: 0;
-  font-family: sans-serif;
-  font-weight: bold;
-}
-.read .fv:after {
-  content: "\a0";
-}
-.read .h {
-  text-align: center;
-  font-style: italic;
-}
-.read [class^="imt"],
-.read [class^="is"] {
-  text-align: center;
-  font-weight: bold;
-  font-size: 2.7em;
-  line-height: 2em;
-  margin-top: 2.5em;
-  margin-bottom: 2.5em;
-}
-.read [class^="ip"] {
-  text-indent: 1em;
-}
-.read .ipi {
-  padding-left: 1em;
-  padding-right: 1em;
-}
-.read .im {
-  text-indent: 0;
-}
-.read .imi {
-  text-indent: 0;
-  margin-left: 1em;
-  margin-right: 1em;
-}
-.read .ipq {
-  font-style: italic;
-  margin-left: 1em;
-  margin-right: 1em;
-}
-.read .imq {
-  margin-left: 1em;
-  margin-right: 1em;
-}
-.read .ipr {
-  text-align: right;
-  text-indent: 0;
-}
-.read [class^="iq"] {
-  margin-left: 1em;
-  margin-right: 1em;
-}
-.read .iq2 {
-  text-indent: 1em;
-}
-.read [class^="ili"] {
-  padding-left: 1em;
-  text-indent: -1em;
-}
-.read .ili1 {
-  margin-left: 1em;
-  margin-right: 1em;
-}
-.read .ili2 {
-  margin-left: 2em;
-  margin-right: 1em;
-}
-.read .iot {
-  font-weight: bold;
-  font-size: 1.8em;
-  line-height: 1.8em;
-  margin-top: 1.8em;
-  margin-bottom: 0;
-}
-.read .io,
-.read .io1 {
-  margin-left: 1em;
-  margin-right: 0em;
-}
-.read .io2 {
-  margin-left: 2em;
-  margin-right: 0em;
-}
-.read .io3 {
-  margin-left: 3em;
-  margin-right: 0em;
-}
-.read .io4 {
-  margin-left: 4em;
-  margin-right: 0em;
-}
-.read .ior {
-  font-style: italic;
-}
-.read .iex {
-  text-indent: 1em;
-}
-.read .iqt {
-  text-indent: 1em;
-  font-style: italic;
-}
-.read [class^="p"] {
-  text-indent: 1em;
-}
-.read .m {
-  text-indent: 0 !important;
-}
-.read .p:not(:last-child) {
-  margin-bottom:1rem;
-}
-.read .pmo {
-  text-indent: 0;
-  margin-left: 1em;
-  margin-right: 0em;
-}
-.read .pm {
-  margin-left: 1em;
-  margin-right: 0em;
-}
-.read .pmr {
-  text-align: right;
-}
-.read .pmc {
-  margin-left: 1em;
-  margin-right: 0em;
-}
-.read .pi {
-  margin-left: 1em;
-  margin-right: 0em;
-}
-.read .pi1 {
-  margin-left: 2em;
-  margin-right: 0em;
-}
-.read .pi2 {
-  margin-left: 3em;
-  margin-right: 0em;
-}
-.read .pi3 {
-  margin-left: 4em;
-  margin-right: 0em;
-}
-.read .mi {
-  margin-left: 1em;
-  margin-right: 0em;
-  text-indent: 0;
-}
-.read .pc {
-  text-align: center;
-  text-indent: 0;
-}
-.read .cls {
-  text-align: right;
-}
-.read [class^="li"] {
-  padding-left: 1em;
-  text-indent: -1em;
-  margin-left: 1em;
-  margin-right: 0em;
-}
-.read .li2 {
-  margin-left: 2em;
-  margin-right: 0em;
-}
-.read .li3 {
-  margin-left: 3em;
-  margin-right: 0em;
-}
-.read .li4 {
-  margin-left: 4em;
-  margin-right: 0em;
-}
-.read .b {
-  height: 2.5em;
-}
-.read [class^="q"] {
-  padding-left: 1em;
-  text-indent: -1em;
-  margin-left: 1em;
-  margin-right: 0em;
-  display: block;
-}
-.read .q2 {
-  margin-left: 1.5em;
-  margin-right: 0em;
-}
-.read .q3 {
-  margin-left: 2em;
-  margin-right: 0em;
-}
-.read .q4 {
-  margin-left: 2.5em;
-  margin-right: 0em;
-}
-.read .qr {
-  text-align: right;
-  font-style: italic;
-}
-.read .qc {
-  text-align: center;
-}
-.read .qs {
-  font-style: italic;
-  text-align: right;
-}
-.read .qa {
-  text-align: center;
-  font-style: italic;
-  font-size: 1.1em;
-  margin-left: 0em;
-  margin-right: 0em;
-}
-.read .qac {
-  margin-left: 0em;
-  margin-right: 0em;
-  padding: 0;
-  text-indent: 0;
-  font-style: italic;
-}
-.read .qm2 {
-  margin-left: 1.5em;
-  margin-right: 0em;
-}
-.read .qm3 {
-  margin-left: 2em;
-  margin-right: 0em;
-}
-.read .qt {
-  font-style: italic;
-  text-indent: 0;
-  padding: 0;
-  margin: 0;
-}
-.read .bk {
-  font-style: italic;
-}
-.read .nd {
-  font-variant: small-caps;
-}
-.read .add {
-  font-style: italic;
-}
-.read .dc {
-  font-style: italic;
-}
-.read .k {
-  font-weight: bold;
-  font-style: italic;
-}
-.read .lit {
-  text-align: right;
-  font-weight: bold;
-}
-.read .pn {
-  font-weight: bold;
-  text-decoration: underline;
-}
-.read .sls {
-  font-style: italic;
-}
-.read .tl {
-  font-style: italic;
-}
-.read .wj {
-  color: #cc0000;
-}
-.read .em {
-  font-style: italic;
-}
-.read .bd {
-  font-weight: bold;
-}
-.read .it {
-  font-style: italic;
-}
-.read .bdit {
-  font-weight: bold;
-  font-style: italic;
-}
-.read .no {
-  font-weight: normal;
-  font-style: normal;
-}
-.read .sc {
-  font-variant: small-caps;
-}
-.read .qt {
-  font-style: italic;
-}
-.read .sig {
-  font-weight: normal;
-  font-style: italic;
-}
-.read table {
-  width: 100%;
-  display: table;
-}
-.read .tr {
-  display: table-row;
-}
-.read [class^="th"] {
-  font-style: italic;
-  display: table-cell;
-}
-.read [class^="thr"] {
-  text-align: right;
-  padding: 0 2.5em;
-}
-.read [class^="tc"] {
-  display: table-cell;
-}
-.read [class^="tcr"] {
-  text-align: right;
-  padding: 0 2.5em;
-}
-.read [class^="mt"] {
-  text-align: center;
-  font-weight: bold;
-  letter-spacing: normal;
-}
-.read .mt,
-.read .mt1,
-.read .mt2 {
-  font-size: 4em;
-  line-height: 5em;
-  margin-top: 2.5em;
-  margin-bottom: 2.5em;
-}
-.read .mt2 {
-  font-size: 3.4em;
-  margin-top: -2.5em;
-  font-style: italic;
-  font-weight: normal;
-}
-.read [class^="ms"],
-.read .ms,
-.read .ms1,
-.read .ms2,
-.read .ms3 {
-  text-align: center;
-  font-weight: bold;
-  font-size: 2.7em;
-  line-height: 5em;
-  margin-top: 2.5em;
-  margin-bottom: 0;
-}
-.read .mr {
-  font-size: 0.9em;
-  margin-bottom: 2.5em;
-  text-align: center;
-  font-weight: normal;
-  font-style: italic;
-}
-.read .s,
-.read .s1,
-.read .s2,
-.read .s3,
-.read .s4 {
-  text-align: center;
-  font-weight: bold;
-  font-style: italic;
-  font-size: inherit;
-  line-height: 5em;
-  margin-bottom: 2.5em;
-  margin-top: 0;
-}
-.read .sr {
-  font-weight: normal;
-  font-style: italic;
-  text-align: center;
-  font-size: inherit;
-  letter-spacing: normal;
-}
-.read .r {
-  font-size: 1.8em;
-  font-weight: normal;
-  font-style: italic;
-  text-align: center;
-  letter-spacing: normal;
-}
-.read .rq {
-  font-size: inherit;
-  line-height: 2.5em;
-  font-style: italic;
-  text-align: right;
-  letter-spacing: normal;
-}
-.read .d {
-  font-style: italic;
-  text-align: center;
-  font-size: inherit;
-  letter-spacing: normal;
-}
-.read .sp {
-  text-align: left;
-  font-weight: normal;
-  font-style: italic;
-  font-size: inherit;
-  letter-spacing: normal;
+  padding: 1rem;
 }
 
-/*# sourceMappingURL=read.css.map */
+// chapter number drop cap
+.read .drop-cap {
+  // float: left;
+
+  // font-size: 3em;
+  // line-height: 1;
+  // text-indent: 0;
+  // padding-right: 0.5rem;
+  // font-style: normal;
+}
+
+/* ===== Elements ===== */
+
+// Verse number. More: https://ubsicap.github.io/usx/elements.html#verse
+.read .v {
+  display: inline-block;
+  vertical-align: super;
+  font-size: xx-small;
+  color: $color-text-extralight;
+  padding: 0 .2em;
+}
+
+/* ===== Introductions ===== */
+
+// # denotes the title level or relative weighting.
+// Introduction major title. More: https://ubsicap.github.io/usx/parastyles.html#imt
+.read .imt {}
+
+.read .imt1 {}
+
+.read .imt2 {}
+
+.read .imt3 {}
+
+.read .imt4 {}
+
+// # denotes the title level or relative weighting.
+// Introduction section heading. More: https://ubsicap.github.io/usx/parastyles.html#is
+.read .is {}
+
+// Introduction paragraph. More: https://ubsicap.github.io/usx/parastyles.html#ip
+.read .ip {}
+
+// Indented introduction paragraph. More: https://ubsicap.github.io/usx/parastyles.html#ipi
+.read .ipi {}
+
+// Introduction flush left (margin) paragraph. More: https://ubsicap.github.io/usx/parastyles.html#im
+.read .im {}
+
+// Indented introduction flush left (margin) paragraph. More: https://ubsicap.github.io/usx/parastyles.html#imi
+.read .imi {}
+
+// Introduction quote from scripture text paragraph. More: https://ubsicap.github.io/usx/parastyles.html#ipq
+.read .ipq {}
+
+// Introduction flush left (margin) quote from scripture text paragraph. More: https://ubsicap.github.io/usx/parastyles.html#imq
+.read .imq {}
+
+// Introduction right-aligned paragraph. More: https://ubsicap.github.io/usx/parastyles.html#ipr
+.read .ipr {}
+
+// # represents the level of indent (i.e. iq1, iq2, iq3 etc.)
+// Introduction poetic line. More: https://ubsicap.github.io/usx/parastyles.html#iq
+.read .iq {}
+
+// Introduction blank line. More: https://ubsicap.github.io/usx/parastyles.html#ib
+.read .ib {}
+
+// # represents the level of indent
+// Introduction list item. More: https://ubsicap.github.io/usx/parastyles.html#ili
+.read .ili {}
+
+// Introduction outline title.  More: https://ubsicap.github.io/usx/parastyles.html#iot
+.read .iot {}
+
+// # represents the outline (indent) level
+// Introduction outline entry.  More: https://ubsicap.github.io/usx/parastyles.html#io
+.read .io {}
+
+// Introduction explanatory or bridge text. More: https://ubsicap.github.io/usx/parastyles.html#iex
+.read .iex {}
+
+// # represents a portion of the title, with the lesser emphasis (relative weighting) being on the higher numbers.
+// Introduction major title ending. More: https://ubsicap.github.io/usx/parastyles.html#imte
+.read .imte {}
+
+// Introduction end. More: https://ubsicap.github.io/usx/parastyles.html#ie
+.read .ie {}
+
+/* ===== Titles and headings ===== */
+
+// # represents a portion of the title, with the lesser emphasis (relative weighting) being on the higher numbers.
+// Main title. More: https://ubsicap.github.io/usx/parastyles.html#mt
+.read .mt {}
+
+.read .mt1 {}
+
+.read .mt2 {}
+
+.read .mt3 {}
+
+// Main title at introduction ending. More: https://ubsicap.github.io/usx/parastyles.html#mte
+.read .mte {}
+
+// The chapter “label” to be used when the chosen publishing presentation will render chapter divisions as headings (not drop cap numerals). More: https://ubsicap.github.io/usx/parastyles.html#cl
+.read .cl {}
+
+// Chapter description. More: https://ubsicap.github.io/usx/parastyles.html#cd
+.read .cd {}
+
+// # represents the level of division.
+// Major section heading. More: https://ubsicap.github.io/usx/parastyles.html#ms
+.read .ms {}
+
+// Major section reference range. More: https://ubsicap.github.io/usx/parastyles.html#mr
+.read .mr {}
+
+// # represents the level of division.
+// Section heading. More: https://ubsicap.github.io/usx/parastyles.html#s
+.read .s {}
+
+.read .s1 {}
+
+.read .s2 {}
+
+// Section reference range. More: https://ubsicap.github.io/usx/parastyles.html#sr
+.read .sr {}
+
+// Parallel passage reference(s). More: https://ubsicap.github.io/usx/parastyles.html#r
+.read .r {}
+
+// Descriptive title (or “Hebrew subtitle”). More: https://ubsicap.github.io/usx/parastyles.html#d
+.read .d {}
+
+// Speaker identification (e.g. Job and Song of Songs). More: https://ubsicap.github.io/usx/parastyles.html#sp
+.read .sp {}
+
+// # represents the level of division being marked
+// Semantic division (semantic space). More: https://ubsicap.github.io/usx/parastyles.html#sd
+.read .sd {}
+
+/* ===== Paragraphs =====*/
+
+// Normal paragraph. More: https://ubsicap.github.io/usx/parastyles.html#p
+.read .p {
+  margin-block-start: 1em;
+  max-width: 60ch;
+}
+
+// Margin paragraph. More: https://ubsicap.github.io/usx/parastyles.html#m
+.read .m {}
+
+// Opening of an epistle / letter. More: https://ubsicap.github.io/usx/parastyles.html#po
+.read .po {}
+
+// Right-aligned paragraph. More: https://ubsicap.github.io/usx/parastyles.html#pr
+.read .pr {}
+
+// Closure of an epistle / letter. More: https://ubsicap.github.io/usx/parastyles.html#cls
+.read .cls {}
+
+// Embedded text opening. More: https://ubsicap.github.io/usx/parastyles.html#pmo
+.read .pmo {}
+
+// Embedded text paragraph. More: https://ubsicap.github.io/usx/parastyles.html#pm
+.read .pm {}
+
+// Embedded text closing. More: https://ubsicap.github.io/usx/parastyles.html#pmc
+.read .pmc {}
+
+// Embedded text refrain. More: https://ubsicap.github.io/usx/parastyles.html#pmr
+.read .pmr {}
+
+// # represents the level of indent.
+// Indented paragraph. More: https://ubsicap.github.io/usx/parastyles.html#pi
+.read .pi {}
+
+.read .pi1 {}
+
+// Indented flush left paragraph. More: https://ubsicap.github.io/usx/parastyles.html#mi
+.read .mi {}
+
+// Centered paragraph. More: https://ubsicap.github.io/usx/parastyles.html#pc
+.read .pc {}
+
+// *** Use is strongly discouraged ***
+// # represents the level of indent
+// Indented paragraph with hanging indent. More: https://ubsicap.github.io/usx/parastyles.html#ph
+.read .ph {}
+
+/* ===== Poetry ===== */
+
+// # represents the level of indent
+// Poetic line. More: https://ubsicap.github.io/usx/parastyles.html#q
+.read .q {}
+
+.read .q1 {}
+
+.read .q2 {}
+
+// Right-aligned poetic line. More: https://ubsicap.github.io/usx/parastyles.html#qr
+.read .qr {}
+
+// Centered poetic line. More: https://ubsicap.github.io/usx/parastyles.html#qc
+.read .qc {}
+
+// Acrostic heading. More: https://ubsicap.github.io/usx/parastyles.html#qa
+.read .qa {}
+
+// # represents the level of indent
+// Embedded text poetic line. More: https://ubsicap.github.io/usx/parastyles.html#qm
+.read .qm {}
+
+// Hebrew note. More: https://ubsicap.github.io/usx/parastyles.html#qd
+.read .qd {}
+
+// Blank line. More: https://ubsicap.github.io/usx/parastyles.html#b
+.read .b {
+  padding-block-start: 1em;
+}
+
+/* ===== Special text ====== */
+
+// Translator’s addition. More: https://ubsicap.github.io/usx/charstyles.html#add
+.read .add {}
+
+// Quoted book title. More: https://ubsicap.github.io/usx/charstyles.html#bk
+.read .bk {}
+
+// Name of God (name of deity). More: https://ubsicap.github.io/usx/charstyles.html#nd
+.read .nd {}
+
+// Ordinal number ending (i.e. in 1st — 1<char style="ord">st</char>). More: https://ubsicap.github.io/usx/charstyles.html#ord
+.read .ord {}
+
+// Used to indicate the acrostic letter within a poetic line. More: https://ubsicap.github.io/usx/charstyles.html#qac
+.read .qac {}
+
+// Used for the expression “Selah” commonly found in Psalms and Habakkuk. More: https://ubsicap.github.io/usx/charstyles.html#qs
+.read .qs {}
+
+// Quoted text. More: https://ubsicap.github.io/usx/charstyles.html#qt
+.read .qt {}
+
+// Inline quotation reference(s). Quoted text. More: https://ubsicap.github.io/usx/charstyles.html#rq
+.read .rq {}
+
+// Signature of the author of an epistle. Quoted text. More: https://ubsicap.github.io/usx/charstyles.html#sig
+.read .sig {}
+
+// Transliterated (or foreign) word(s). More: https://ubsicap.github.io/usx/charstyles.html#tl
+.read .tl {}
+
+// Words of Jesus. More: https://ubsicap.github.io/usx/charstyles.html#wj
+.read .wj {}
+
+/* ===== Character styling ===== */
+
+// Emphasis text. More: https://ubsicap.github.io/usx/charstyles.html#it
+.read .em {}
+
+// Bold text. More: https://ubsicap.github.io/usx/charstyles.html#bd
+.read .bd {}
+
+// Bold + Italic text. More: https://ubsicap.github.io/usx/charstyles.html#bdit
+.read .bdit {}
+
+// Italic text. More: https://ubsicap.github.io/usx/charstyles.html#it
+.read .it {}
+
+// Normal text. More: https://ubsicap.github.io/usx/charstyles.html#no
+.read .no {}
+
+// Small-cap text. More: https://ubsicap.github.io/usx/charstyles.html#sc
+.read .sc {}
+
+// Superscript text. More: https://ubsicap.github.io/usx/charstyles.html#sup
+.read .sup {}
+
+// Why is this a class name? /chapter/GEN.intro?version=01b29f4b342acc35-01
+.read .usfm {}

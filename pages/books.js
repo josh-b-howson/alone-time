@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { Layout, LinkItem, LinkList } from '../components/layout-components';
 import { SVG } from '../components/svg';
 import { getAllBooks } from '../utils/bibleConnector';
@@ -12,6 +13,7 @@ const Books = (props) => {
   const books = props.books;
   return (
     <Layout {...props} title="Books List">
+      <Link href="/"><a className="home">&larr;&nbsp;Home</a></Link>
       <h1>Books</h1>
       <LinkList className="book-list">
         {books.map(book =>
@@ -24,6 +26,7 @@ const Books = (props) => {
         )}
       </LinkList>
       <style global jsx>{`
+        .home {margin-block:1em}
         .book-list {max-width:24rem}
         .book-list .icon {flex-shrink:0; height:1.8rem; width:1.8rem; stroke:var(--color-primary-700)}
       `}</style>

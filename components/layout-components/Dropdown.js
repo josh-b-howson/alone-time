@@ -4,22 +4,28 @@ import PropTypes from 'prop-types';
 /**
  * Just a container for togglable content.
  * Outputs a toggle button and the content in a div.
+ * Simply sets content to display: [block || none] when droppedDown 
+ * is true/false, respectively.
+ * 
  * No styling is applied here.
  * @param {*} props 
  */
 const Dropdown = (props) => {
+
+  const ddContent = useRef(null);
+  const [droppedDown, setDroppedDown] = useState(false);
+
   // concatenate classNames
   const togglerClassName = [
     "dd__toggler",
     props.togglerClassName,
   ].filter(i => !!i).join(' ');
+
   const contentClassName = [
     "dd__content",
     props.contentClassName,
   ].filter(i => !!i).join(' ');
 
-  const ddContent = useRef(null);
-  const [droppedDown, setDroppedDown] = useState(false);
 
   const addDroppedDownEventListeners = () => {
     document.addEventListener('click', handleClickWhileDroppedDown);
@@ -92,15 +98,20 @@ const Dropdown = (props) => {
     </>
   )
 }
+
 Dropdown.defaultProps = {
   contentTag: 'div',
 }
 
 Dropdown.propTypes = {
+  /** Pass in a the toggler element. This will be wrapped 
+  * in a button with the onClick toggle event */
   toggler: PropTypes.node.isRequired,
   /** Content class is important to ensure the show/hide toggling
-   *  applies to this component & this component only */
+   * applies to this component & this component only */
   contentClassName: PropTypes.string.isRequired,
+  /* Specify the content's html tag as string (default: 'div') */
+  contentTag: PropTypes.string,
 }
 
 export default Dropdown;
