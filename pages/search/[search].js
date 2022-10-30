@@ -22,7 +22,11 @@ const SearchResult = (props) => {
             {verses.map(verse => <li key={verse.id}>
               <div className="res-reference">
                 <h2>{verse.reference}</h2>
-                &nbsp;<Link href={`/chapter/${verse.chapterId}?version=${queryVersionId}`}><a className="read-chapter">Read Chapter&nbsp;&rarr;</a></Link>
+                <Link
+                  href={`/chapter/${verse.chapterId}?version=${queryVersionId}`}
+                  className="read-chapter">
+                  Read Chapter&nbsp;&rarr;
+                </Link>
               </div>
               <div>{verse.text}</div>
             </li>)}
@@ -35,21 +39,41 @@ const SearchResult = (props) => {
             <li>Page: {currentPage} of {totalPages}</li>
           </ul>
           <nav>
-            {currentPage > 1 &&
-              <Link href={`/search/${searchQuery.search}?version=${searchQuery.version}&page=${currentPage - 1}`}><a>Previous page</a></Link>
+            {currentPage > 1
+              && <Link
+                href={`/search/${searchQuery.search}?version=${searchQuery.version}&page=${currentPage - 1}`}>
+                Previous page
+              </Link>
             }
-            {currentPage < totalPages &&
-              <Link href={`/search/${searchQuery.search}?version=${searchQuery.version}&page=${currentPage + 1}`}><a>Next page</a></Link>
+            {currentPage < totalPages
+              && <Link
+                href={`/search/${searchQuery.search}?version=${searchQuery.version}&page=${currentPage + 1}`}>
+                Next page
+              </Link>
             }
-            {currentPage > totalPages &&
-              <>You went too far! <Link href={`/search/${searchQuery.search}?version=${searchQuery.version}&page=${1}`}><a>Back to results</a></Link></>
+            {currentPage > totalPages
+              && <>
+                You went too far!
+                <Link
+                  href={`/search/${searchQuery.search}?version=${searchQuery.version}&page=${1}`}>
+                  Back to results
+                </Link>
+              </>
             }
           </nav>
         </>
-        : <div>No Results. Try a new search or switch to a different version.<br /> <Link href='/'><a>Back to home</a></Link></div>}
+        : <div>
+          No Results. Try a new search or switch to a different version.
+          <br />
+          <Link
+            href='/'>
+            Back to Home
+          </Link>
+        </div>
+      }
       <style jsx>{`
         .results {
-          margin-block:1em;
+          margin-block: 1em;
         }
         .results-list {
           display: flex;

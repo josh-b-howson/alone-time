@@ -18,8 +18,14 @@ const Chapter = (props) => {
   const chapterName = reference;
   const chapterNumber = chapter.number;
   const versionIdFromQuery = props.query.version;
-  return <Layout {...props} title={`Read ${reference}`}>
-    <Link href={`/book/${chapter.bookId}?version=${versionIdFromQuery}`}><a className="chapters">&larr; Chapters</a></Link>
+  return <Layout
+    {...props}
+    title={`Read ${reference}`}>
+    <Link
+      href={`/book/${chapter.bookId}?version=${versionIdFromQuery}`}
+      className="chapters">
+      &larr; Chapters
+    </Link>
     <h1>{chapterName}</h1>
     <main className="read">
       <BibleContent
@@ -28,15 +34,15 @@ const Chapter = (props) => {
     </main>
     <nav
       className="chapter-nav">
-      {chapter.previous &&
-        <Link
+      {chapter.previous
+        && <Link
           href={`/chapter/${chapter.previous.id}?version=${versionIdFromQuery}`}>
-          <a>&larr;&nbsp;&nbsp;Previous</a>
+          &larr;&nbsp;&nbsp;Previous
         </Link>}
-      {chapter.next &&
-        <Link
+      {chapter.next
+        && <Link
           href={`/chapter/${chapter.next.id}?version=${versionIdFromQuery}`}>
-          <a>Next&nbsp;&nbsp;&rarr;</a>
+          Next&nbsp;&nbsp;&rarr;
         </Link>}
     </nav>
     {chapter.copyright

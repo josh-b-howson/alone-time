@@ -11,8 +11,9 @@ const Layout = (props) => {
       <Head {...props} />
       <header>
         <Link
-          href="/">
-          <a className="home">Home</a>
+          href="/"
+          className="home">
+          Home
         </Link>
       </header>
       <main>

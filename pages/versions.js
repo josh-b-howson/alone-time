@@ -11,7 +11,7 @@ const Versions = (props) => {
       <h1>Bible Versions</h1>
       <ul>
         {versions && versions.map(version =>
-          <li key={version.id}>{version.name} <Link href={`/version/${version.id}`}><a>View</a></Link></li>
+          <li key={version.id}>{version.name} <Link href={`/version/${version.id}`}>View</Link></li>
         )}
       </ul>
     </Layout>

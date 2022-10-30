@@ -10,8 +10,14 @@ const Book = (props) => {
     ? chapter.number.substring(0, 3)
     : chapter.number;
   return (
-    <Layout {...props} title={book.name}>
-      <Link href={`/books?version=${queryVersionId}`}><a className="books">&larr;&nbsp;Books</a></Link>
+    <Layout
+      {...props}
+      title={book.name}>
+      <Link
+        href={`/books?version=${queryVersionId}`}
+        className="books">
+        &larr;&nbsp;Books
+      </Link>
       <h1>{book.name}</h1>
       <h4>Chapters</h4>
       <LinkList

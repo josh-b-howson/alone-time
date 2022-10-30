@@ -13,7 +13,12 @@ const Books = (props) => {
   const books = props.books;
   return (
     <Layout {...props} title="Books List">
-      <Link href="/"><a className="home">&larr;&nbsp;Home</a></Link>
+      <Link
+        href="/"
+        className="home">
+        &larr;&nbsp;
+        Home
+      </Link>
       <h1>Books</h1>
       <LinkList className="book-list">
         {books.map(book =>

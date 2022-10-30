@@ -17,7 +17,7 @@ const Home = (props) => {
         <SearchBox />
       </div>
       <div className="home__books">
-        Or <Link href={`/books?version=${currentVersionId}`}><a>Choose a Book</a></Link>
+        Or <Link href={`/books?version=${currentVersionId}`}>Choose a Book</Link>
       </div>
       <style jsx>{`
         .home__title {display:flex; flex-wrap:nowrap; align-items:center; justify-content:flex-start; gap:1rem; margin-top:1.5rem}
