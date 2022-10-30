@@ -21,7 +21,7 @@ const Home = (props) => {
       </div>
       <style jsx>{`
         .home__title {display:flex; flex-wrap:nowrap; align-items:center; justify-content:flex-start; gap:1rem; margin-top:1.5rem}
-        .home__title h1 {color:var(--color-text-light)}
+        .home__title h1 {color:var(--color-text-dark)}
         .home__search {margin-top:.8rem}
         .home__books {margin-top:2rem}
       `}</style>
