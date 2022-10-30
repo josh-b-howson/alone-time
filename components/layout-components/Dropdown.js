@@ -75,7 +75,14 @@ const Dropdown = (props) => {
     }
   }, [droppedDown]);
 
-  const dropDown = () => setDroppedDown(true);
+  const dropDown = e => {
+    e.stopPropagation()
+    setDroppedDown(true)
+  }
+
+  useEffect(() => {
+    console.log('dropped down:', droppedDown)
+  }, [droppedDown])
 
   return (
     <>
